@@ -60,7 +60,7 @@ namespace Head_Chef.Controllers
     public async Task<IActionResult> AddAsync(SearchPage currentPage, string id)
     {
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.omdbapi.com/?apikey=504e93de&i={id}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch{id}");
         var response = await client.SendAsync(request);
         var status = response.EnsureSuccessStatusCode();
         var model = new SearchPageViewModel(currentPage);
