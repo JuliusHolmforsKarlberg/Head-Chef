@@ -1,5 +1,4 @@
-﻿using Head;
-using static Head_Chef.Globals;
+﻿using static Head_Chef.Globals;
 
 namespace Head_Chef.Models.Pages
 {

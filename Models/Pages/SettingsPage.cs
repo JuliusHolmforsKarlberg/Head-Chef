@@ -1,6 +1,4 @@
 ﻿using Head_Chef.Business.Descriptors;
-using Head;
-using Head_Chef.Business.Descriptors;
 using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
 

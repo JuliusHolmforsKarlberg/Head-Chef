@@ -2,7 +2,6 @@
 using Head_Chef.Components.Carousel;
 using Head_Chef.Models.Pages;
 using Head_Chef.Models.ViewModels;
-using Head;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Head_Chef.Components.Blocks

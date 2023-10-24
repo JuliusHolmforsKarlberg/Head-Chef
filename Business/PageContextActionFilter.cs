@@ -3,7 +3,6 @@ using Head_Chef.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using EPiServer.Web.Routing;
-using Head;
 using Head_Chef.Business;
 
 namespace Head_Chef.Business

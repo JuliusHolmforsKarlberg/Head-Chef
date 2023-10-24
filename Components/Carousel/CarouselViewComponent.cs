@@ -1,7 +1,6 @@
 ﻿using EPiServer.Web;
 using Head_Chef.Models.Pages;
 using Head_Chef.Models.ViewModels;
-using Head;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Head_Chef.Components.Carousel

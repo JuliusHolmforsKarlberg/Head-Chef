@@ -1,6 +1,4 @@
-﻿using Head;
-using Head_Chef.Models.Pages;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
 
 namespace Head_Chef.Models.Pages

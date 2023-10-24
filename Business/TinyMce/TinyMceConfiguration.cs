@@ -1,6 +1,5 @@
 ﻿using EPiServer.Cms.TinyMce.Core;
 using Head_Chef.Models.Pages;
-using Head;
 using System.Text;
 
 namespace Head_Chef.Business.TinyMce

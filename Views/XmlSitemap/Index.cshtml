@@ -35,11 +35,11 @@
                     pageUrl = new Uri(page.LinkURL.Contains(".aspx") ? page.LinkURL.Url() : page.LinkURL);
                 }
 
-                var modDate = page.XmlSitemapDate.IsNotNullOrWhiteSpace() ? page.XmlSitemapDate : 
+                var modDate = page.XmlSitemapDate.IsNotNullOrWhiteSpace() ? page.XmlSitemapDate :
                 page.Changed.ToString("d", Thread.CurrentThread.CurrentCulture);
 
                 url.Append("<url><loc>" + pageUrl + "</loc><lastmod>" + modDate + "</lastmod></url>");
-            }            
+            }
         }
     }
 
@@ -48,4 +48,4 @@
     stringBuilder.Append(url);
     stringBuilder.Append(urlsetEnd);
     await accessor.HttpContext.Response.WriteAsync(stringBuilder.ToString());
- 
+}
