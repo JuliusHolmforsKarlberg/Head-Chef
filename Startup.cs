@@ -1,10 +1,18 @@
 using EPiServer.Cms.Shell;
+using EPiServer.Cms.Shell.UI.Configurations;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using Head_Chef.Business.Extensions;
+using Head_Chef.Business.Services;
+using Head_Chef.Business.Services.Interfaces;
+using Head_Chef.Business.TinyMce;
+using Head_Chef.Models.Pages;
+using Head;
+using Head_Chef.Business.Services.Interfaces;
 
-namespace Head_Chef
+namespace Foundation
 {
     public class Startup
     {
@@ -27,8 +35,25 @@ namespace Head_Chef
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
+                .AddFind()
+                .AddNackademin()
                 .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();
+                .AddEmbeddedLocalization<Startup>()
+                .TinyMceConfiguration();
+
+
+            services.Configure<UploadOptions>(x =>
+            {
+                x.FileSizeLimit = 52428800; // 50MB
+            });
+
+            services.Configure<EPiServer.Find.FindOptions>(options =>
+            {
+                options.DefaultIndex = "carl.schele_nackademin2023v001";
+                options.ServiceUrl = "https://demo04.find.episerver.net/SNRr6mO0axGL6CLGAPTGAZrOMFS1S9ZI";
+            });
+
+            services.AddSingleton<IXmlSitemapService, XmlSitemapService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

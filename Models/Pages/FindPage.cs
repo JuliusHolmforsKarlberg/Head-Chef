@@ -1,6 +1,4 @@
 ﻿using Head_Chef.Models.Interfaces;
-using Head;
-using Head_Chef.Models.Interfaces;
 using static Head_Chef.Globals;
 
 namespace Head_Chef.Models.Pages
