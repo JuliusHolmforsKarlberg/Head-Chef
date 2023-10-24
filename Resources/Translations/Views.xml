@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <languages>
-  <language name="English" id="en"></language>
+	<language name="English" id="en">
+		<searchresult>Search result</searchresult>
+	</language>
+	<language name="Svenska" id="sv">
+		<searchresult>Sökresultat</searchresult>
+	</language>
 </languages>
