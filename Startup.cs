@@ -12,7 +12,7 @@ using Head_Chef.Models.Pages;
 using Head;
 using Head_Chef.Business.Services.Interfaces;
 
-namespace Foundation
+namespace Head_Chef
 {
     public class Startup
     {
