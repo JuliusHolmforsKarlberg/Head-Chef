@@ -2,7 +2,7 @@
 using Head_Chef.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Head-Chef.Controllers
+namespace Head_Chef.Controllers
 {
     public class CarouselPageController : PageControllerBase<CarouselPage>
     {
