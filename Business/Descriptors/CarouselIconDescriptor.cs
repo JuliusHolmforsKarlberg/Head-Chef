@@ -1,5 +1,5 @@
 ﻿using EPiServer.Shell;
-using Head;
+using Head_Chef;
 
 namespace Head_Chef.Business.Descriptors
 {
