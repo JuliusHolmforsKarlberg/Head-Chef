@@ -9,7 +9,7 @@ using Head_Chef.Business.Services;
 using Head_Chef.Business.Services.Interfaces;
 using Head_Chef.Business.TinyMce;
 using Head_Chef.Models.Pages;
-using Head;
+using Head_Chef;
 using Head_Chef.Business.Services.Interfaces;
 
 namespace Head_Chef
@@ -47,7 +47,7 @@ namespace Head_Chef
                 x.FileSizeLimit = 52428800; // 50MB
             });
 
-            services.Configure<EPiServer.Find.FindOptions>(options =>
+            IServiceCollection serviceCollection = services.Configure<EPiServer.Find.FindOptions>(options =>
             {
                 options.DefaultIndex = "carl.schele_nackademin2023v001";
                 options.ServiceUrl = "https://demo04.find.episerver.net/SNRr6mO0axGL6CLGAPTGAZrOMFS1S9ZI";
