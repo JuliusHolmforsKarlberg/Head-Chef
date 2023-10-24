@@ -1,0 +1,35 @@
+﻿﻿@using EPiServer.Framework.Localization;
+@using EPiServer.ServiceLocation;
+@using EPiServer.Web.Mvc.Html
+@using Head_Chef.Models.Pages;
+@using Head_Chef.Models.ViewModels
+
+@model StartPageViewModel
+
+@*@await Component.InvokeAsync("Carousel")*@
+
+@Html.PropertyFor(x => x.CurrentPage.Carousel)
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            @foreach (var item in Model.Movies)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <a href="@Url.ContentUrl(item.ContentLink)">
+                            <img src="@item.Poster" width="100%" height="100%" />
+                            <div class="card-body">
+                                <p class="card-text">@item.Title (@item.Year)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.PropertyFor(x => x.CurrentPage.Text)
+</div>                 

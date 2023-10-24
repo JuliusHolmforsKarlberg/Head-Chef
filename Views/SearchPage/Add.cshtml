@@ -1,0 +1,42 @@
+﻿﻿@using EPiServer.Framework.Localization;
+@using EPiServer.ServiceLocation;
+@using EPiServer.Web.Mvc.Html
+@using Head_Chef.Models.Pages;
+@using Head_Chef.Models.ViewModels
+@using Head_Chef.Business.Extensions
+
+@model SearchPageViewModel
+
+@{
+    var defaultPoster = "/static/img/default-poster.jpg";
+    var moviesContainer = Model.Layout.SettingsPage.MoviesContainer;
+    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+    var movies = contentLoader.GetChildren<MoviePage>(moviesContainer);
+}
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <h1>@LocalizationService.Current.GetString("/searchresult")</h1>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            @foreach (var item in movies)
+            {
+                var poster = item.Poster != "N/A" ? item.Poster : defaultPoster;
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="@poster" width="100%" height="100%" onerror="this.onerror=null;this.src='@defaultPoster';" />
+                        <div class="card-body">
+                            <p class="card-text">@item.Title (@item.Year)</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @*<form action="@Html.Action(Url.ContentUrl(Model.Layout.SettingsPage.SearchPage), "add")">
+                                <button type="submit" class="btn btn-sm btn-outline-secondary" name="id" value="@item.ImdbID">Add</button>
+                                </form>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
