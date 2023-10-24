@@ -22,7 +22,7 @@ namespace Head_Chef.Controllers
     public async Task<IActionResult> IndexAsync(SearchPage currentPage, string query)
     {
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Get, $"https://www.omdbapi.com/?apikey=504e93de&s={query}");
+        var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch{query}");
         var response = await client.SendAsync(request);
         var status = response.EnsureSuccessStatusCode();
         var model = new SearchPageViewModel(currentPage);
