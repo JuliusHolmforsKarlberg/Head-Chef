@@ -1,6 +1,6 @@
 ﻿using EPiServer.Framework.Initialization;
 using EPiServer.Framework;
-using Foundation.Models.Pages;
+using Head_Chef.Models.Pages;
 
 namespace Head_Chef.Business.Initialization
 {
