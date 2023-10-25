@@ -6,14 +6,14 @@
 
 @model StartPageViewModel
 
-@*@await Component.InvokeAsync("Carousel")*@
+@* @await Component.InvokeAsync("Carousel") *@
 
 @Html.PropertyFor(x => x.CurrentPage.Carousel)
 
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-            @foreach (var item in Model.Movies)
+            @* @foreach (var item in Model.Movies)
             {
                 <div class="col">
                     <div class="card shadow-sm">
@@ -25,11 +25,11 @@
                         </a>
                     </div>
                 </div>
-            }
+            } *@
         </div>
     </div>
 </div>
 
 <div>
-    @Html.PropertyFor(x => x.CurrentPage.Text)
+    @* @Html.PropertyFor(x => x.CurrentPage.Text) *@
 </div>                 
