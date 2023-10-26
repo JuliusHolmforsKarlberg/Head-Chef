@@ -31,15 +31,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Logs\**" />
+	  <Compile Remove="wwwroot\**" />
+	  <Content Remove="Logs\**" />
+	  <Content Remove="wwwroot\**" />
+	  <EmbeddedResource Remove="Logs\**" />
+	  <EmbeddedResource Remove="wwwroot\**" />
+	  <None Remove="Logs\**" />
+	  <None Remove="wwwroot\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Remove="Controllers\CarouselPageController.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Content Remove="Views\SearchPage\Add.cshtml" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Logs\" />
-		<Folder Include="wwwroot\static\img\" />
 	</ItemGroup>
 </Project>
