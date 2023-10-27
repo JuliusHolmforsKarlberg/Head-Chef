@@ -8,6 +8,6 @@ namespace Head_Chef.Models.ViewModels
         {
         }
 
-        public IEnumerable<MoviePage> Movies { get; set; }
+        //public IEnumerable<MoviePage> Movies { get; set; } 
     }
 }

@@ -30,7 +30,7 @@ namespace Head_Chef.Controllers
 
             if (parent != null)
             {
-                model.Movies = _contentLoader.GetChildren<MoviePage>(parent);
+                //model.Movies = _contentLoader.GetChildren<MoviePage>(parent);
             }
         }
 

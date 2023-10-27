@@ -30,7 +30,7 @@ namespace Head_Chef.Business.TinyMce
                     .AddPlugin("epi-link", "epi-image-editor", "epi-image-tools", "epi-dnd-processor", "code", "wordcount", "table", "directionality", "searchreplace")
                     .Toolbar(sbFirstBar.ToString());
 
-                config.For<StartPage>(x => x.Text);
+                //config.For<StartPage>(x => x.Text);
             });
         }
     }

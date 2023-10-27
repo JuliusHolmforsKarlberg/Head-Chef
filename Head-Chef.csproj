@@ -33,13 +33,9 @@
 
 	<ItemGroup>
 	  <Compile Remove="Logs\**" />
-	  <Compile Remove="wwwroot\**" />
 	  <Content Remove="Logs\**" />
-	  <Content Remove="wwwroot\**" />
 	  <EmbeddedResource Remove="Logs\**" />
-	  <EmbeddedResource Remove="wwwroot\**" />
 	  <None Remove="Logs\**" />
-	  <None Remove="wwwroot\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -48,5 +44,9 @@
 
 	<ItemGroup>
 		<Content Remove="Views\SearchPage\Add.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\gfx\" />
 	</ItemGroup>
 </Project>

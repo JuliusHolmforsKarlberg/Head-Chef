@@ -36,7 +36,7 @@ namespace Head_Chef.Models.Pages
             Name = "Text",
             Description = ""
         )]
-        public virtual XhtmlString Text { get; set; }
+        
 
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }
