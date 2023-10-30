@@ -30,12 +30,6 @@ namespace Head_Chef.Models.Pages
         [AllowedTypes(typeof(CarouselPage), typeof(CarouselBlock))]
         public virtual ContentArea Carousel { get; set; }
 
-        [Display(
-            GroupName = SystemTabNames.Content,
-            Order = 20,
-            Name = "Text",
-            Description = ""
-        )]
         
 
         [ScaffoldColumn(false)]

@@ -24,15 +24,15 @@ namespace Head_Chef.Controllers
         var settingsPage = settingsPages.FirstOrDefault();
         var model = new StartPageViewModel(currentPage);
 
-        if (settingsPage != null)
-        {
-            var parent = settingsPage.MoviesContainer;
+        //if (settingsPage != null)
+        //{
+        //    var parent = settingsPage.MoviesContainer;
 
-            if (parent != null)
-            {
-                //model.Movies = _contentLoader.GetChildren<MoviePage>(parent);
-            }
-        }
+        //    if (parent != null)
+        //    {
+        //        //model.Movies = _contentLoader.GetChildren<MoviePage>(parent);
+        //    }
+        //}
 
         return View(model);
     }
