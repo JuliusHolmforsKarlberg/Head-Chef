@@ -4,6 +4,9 @@ using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using Geta.NotFoundHandler.Infrastructure.Configuration;
+using Geta.NotFoundHandler.Infrastructure.Initialization;
+using Geta.NotFoundHandler.Optimizely.Infrastructure.Configuration;
 using Head_Chef.Business.Extensions;
 using Head_Chef.Business.Services;
 using Head_Chef.Business.Services.Interfaces;
@@ -52,6 +55,24 @@ namespace Head_Chef
                 options.ServiceUrl = "https://demo04.find.episerver.net/SNRr6mO0axGL6CLGAPTGAZrOMFS1S9ZI";
             });
 
+            var connectionString = "Data Source=cms2-sqlserver.database.windows.net,1433;Initial Catalog=cms2_headchef;Persist Security Info=False;User ID=HeadChefAdmin;Password='BytMig123!~¨^';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddNotFoundHandler(o =>
+            {
+                o.UseSqlServer(connectionString);
+                o.BufferSize = 30;
+                o.ThreshHold = 5;
+                o.HandlerMode = FileNotFoundMode.On;
+                o.IgnoredResourceExtensions = new[] { "jpg", "gif", "png", "css", "js", "ico", "swf", "woff" };
+                o.Logging = LoggerMode.On;
+                o.LogWithHostname = false;
+                //o.AddProvider<NullNotFoundHandlerProvider>();
+            });
+
+            services.AddOptimizelyNotFoundHandler(o =>
+            {
+                o.AutomaticRedirectsEnabled = true;
+            });
+
             services.AddSingleton<IXmlSitemapService, XmlSitemapService>();
         }
 
@@ -67,9 +88,16 @@ namespace Head_Chef
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
+            app.UseNotFoundHandler();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
+                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action}/{id?}");
             });
         }
     }
