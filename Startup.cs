@@ -83,13 +83,15 @@ namespace Head_Chef
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
+            app.UseNotFoundHandler();
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseStatusCodePagesWithReExecute("/error/{0}");
-            app.UseNotFoundHandler();
+
 
             app.UseEndpoints(endpoints =>
             {
