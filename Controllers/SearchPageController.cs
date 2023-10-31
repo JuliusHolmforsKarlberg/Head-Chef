@@ -8,125 +8,132 @@ using Newtonsoft.Json;
 namespace Head_Chef.Controllers
 {
     public class SearchPageController : PageControllerBase<SearchPage>
-{
-    private readonly IContentLoader _contentLoader;
-    private readonly IContentRepository _contentRepository;
-
-    public SearchPageController(IContentLoader contentLoader, IContentRepository contentRepository)
     {
-        _contentLoader = contentLoader;
-        _contentRepository = contentRepository;
-    }
+        private readonly IContentLoader _contentLoader;
+        private readonly IContentRepository _contentRepository;
 
-    [HttpGet]
-    public async Task<IActionResult> IndexAsync(SearchPage currentPage, string query)
-    {
-        var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch{query}");
-        var response = await client.SendAsync(request);
-        var status = response.EnsureSuccessStatusCode();
-        var model = new SearchPageViewModel(currentPage);
+        private readonly string apiKey = "03ee5cb13a274be5a31d9594f779bfb9";
 
-        if (status.IsSuccessStatusCode)
+        public SearchPageController(IContentLoader contentLoader, IContentRepository contentRepository)
         {
-            var result = response.Content.ReadAsStringAsync();
-            var movies = JsonConvert.DeserializeObject<MoviesViewModel.Root>(result.Result);
+            _contentLoader = contentLoader;
+            _contentRepository = contentRepository;
+        }
 
-            if (movies != null)
+        [HttpGet]
+        public async Task<IActionResult> IndexAsync(SearchPage currentPage, string query)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch?apiKey={apiKey}&query={query}");
+            var response = await client.SendAsync(request);
+            var status = response.EnsureSuccessStatusCode();
+            var model = new SearchPageViewModel(currentPage);
+
+            if (status.IsSuccessStatusCode)
             {
-                var parent = GetParent();
+                var result = response.Content.ReadAsStringAsync();
+                var recipes = JsonConvert.DeserializeObject<RecipeCardsViewModel.Root>(result.Result); // MoviesViewModel är den kortare
 
-                if (parent != null)
+                if (recipes != null)
                 {
-                    var filteredMovies = new List<MoviesViewModel.Search>();
+                    //var parent = GetParent();
 
-                    foreach (var item in movies.Search.OrderBy(x => x.Year).ToList())
+                    //if (parent != null) // Här ligger felet - parent == null dvs RecipesContainer är tom i SettingsPage
+                    //{
+                    //    var filteredRecipes = new List<RecipeCardsViewModel.Result>();
+
+                    //    foreach (var item in recipes.Results.ToList())
+                    //    {
+                    //        //if (!MovieExists(parent, item.ImdbID))
+                    //        //{
+                    //        //    filteredMovies.Add(item);
+                    //        //}
+                    //        filteredRecipes.Add(item);
+                    //    }
+
+                    //    //model.Movies = filteredMovies;
+                    //    model.Recipes = filteredRecipes;
+                    //}
+
+                    model.Recipes = recipes.Results;
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddAsync(SearchPage currentPage, string id)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch{id}");
+            var response = await client.SendAsync(request);
+            var status = response.EnsureSuccessStatusCode();
+            var model = new SearchPageViewModel(currentPage);
+
+            if (status.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync();
+                var movie = JsonConvert.DeserializeObject<MovieViewModel.Root>(result.Result);
+
+                if (movie != null)
+                {
+                    var parent = GetParent();
+
+                    if (parent != null)
                     {
-                        if (!MovieExists(parent, item.ImdbID))
-                        {
-                            filteredMovies.Add(item);
-                        }
-                    }
+                        var page = _contentRepository.GetDefault<MoviePage>(parent);
 
-                    model.Movies = filteredMovies;
+                        page.Name = movie.Title;
+                        page.Title = movie.Title;
+                        page.Poster = movie.Poster != null ? movie.Poster : "~/static/img/default-poster.jpg";
+                        page.Year = movie.Year;
+                        page.ImdbRating = movie.ImdbRating;
+                        page.ImdbID = movie.ImdbID;
+                        page.Genre = movie.Genre;
+                        page.Plot = movie.Plot;
+
+                        _contentRepository.Save(page, EPiServer.DataAccess.SaveAction.Publish);
+                    }
                 }
             }
+
+            return LocalRedirect("/");
         }
 
-        return View(model);
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> AddAsync(SearchPage currentPage, string id)
-    {
-        var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch{id}");
-        var response = await client.SendAsync(request);
-        var status = response.EnsureSuccessStatusCode();
-        var model = new SearchPageViewModel(currentPage);
-
-        if (status.IsSuccessStatusCode)
+        public ContentReference GetParent()
         {
-            var result = response.Content.ReadAsStringAsync();
-            var movie = JsonConvert.DeserializeObject<MovieViewModel.Root>(result.Result);
+            var startPageContentLink = SiteDefinition.Current.StartPage;
+            var startPage = _contentLoader.Get<StartPage>(startPageContentLink);
+            var settingsPages = new List<SettingsPage>();
+            startPage.GetDescendantsOfType(settingsPages);
+            var settingsPage = settingsPages.FirstOrDefault();
 
-            if (movie != null)
+            if (settingsPage != null)
             {
-                var parent = GetParent();
+                //var parent = settingsPage.MoviesContainer; //här
+                var parent = settingsPage.RecipesContainer;
 
                 if (parent != null)
                 {
-                    var page = _contentRepository.GetDefault<MoviePage>(parent);
-
-                    page.Name = movie.Title;
-                    page.Title = movie.Title;
-                    page.Poster = movie.Poster != null ? movie.Poster : "~/static/img/default-poster.jpg";
-                    page.Year = movie.Year;
-                    page.ImdbRating = movie.ImdbRating;
-                    page.ImdbID = movie.ImdbID;
-                    page.Genre = movie.Genre;
-                    page.Plot = movie.Plot;
-
-                    _contentRepository.Save(page, EPiServer.DataAccess.SaveAction.Publish);
+                    return parent;
                 }
             }
+
+            return null;
         }
 
-        return LocalRedirect("/");
-    }
 
-    public ContentReference GetParent()
-    {
-        var startPageContentLink = SiteDefinition.Current.StartPage;
-        var startPage = _contentLoader.Get<StartPage>(startPageContentLink);
-        var settingsPages = new List<SettingsPage>();
-        startPage.GetDescendantsOfType(settingsPages);
-        var settingsPage = settingsPages.FirstOrDefault();
-
-        if (settingsPage != null)
+        private bool MovieExists(ContentReference parent, string imdbID)
         {
-            var parent = settingsPage.MoviesContainer;
+            var child = _contentLoader.GetChildren<MoviePage>(parent).Where(x => x.ImdbID == imdbID).FirstOrDefault();
 
-            if (parent != null)
+            if (child == null)
             {
-                return parent;
+                return false;
             }
+
+            return true;
         }
-
-        return null;
     }
-
-
-    private bool MovieExists(ContentReference parent, string imdbID)
-    {
-        var child = _contentLoader.GetChildren<MoviePage>(parent).Where(x => x.ImdbID == imdbID).FirstOrDefault();
-
-        if (child == null)
-        {
-            return false;
-        }
-
-        return true;
-    }
-}
 }

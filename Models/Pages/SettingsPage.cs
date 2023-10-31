@@ -29,6 +29,14 @@ namespace Head_Chef.Models.Pages
         )]
         public virtual ContentReference MoviesContainer { get; set; }
 
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 30,
+            Name = "Recipes",
+            Description = "Select the recipes container"
+        )]
+        public virtual ContentReference RecipesContainer { get; set; }
+
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }
     }
