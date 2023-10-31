@@ -2,8 +2,30 @@
 <languages>
 	<language name="English" id="en">
 		<searchresult>Search result</searchresult>
+		<property>
+			<enum>
+				<region>
+					<sweden>Sweden</sweden>
+					<poland>Poland</poland>
+					<norway>Norway</norway>
+					<germany>Germany</germany>
+					<denmark>Denmark</denmark>
+				</region>
+			</enum>
+		</property>
 	</language>
 	<language name="Svenska" id="sv">
 		<searchresult>Sökresultat</searchresult>
+		<property>
+			<enum>
+				<region>
+					<sweden>Sverige</sweden>
+					<poland>Polen</poland>
+					<norway>Norge</norway>
+					<germany>Tyskland</germany>
+					<denmark>Danmark</denmark>
+				</region>
+			</enum>
+		</property>
 	</language>
 </languages>

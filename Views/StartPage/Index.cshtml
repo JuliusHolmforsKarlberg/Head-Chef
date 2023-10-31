@@ -1,5 +1,6 @@
 ﻿﻿@using EPiServer.Framework.Localization;
 @using EPiServer.ServiceLocation;
+@using EPiServer.Shell.Web.Mvc.Html;
 @using EPiServer.Web.Mvc.Html
 @using Head_Chef.Models.Pages;
 @using Head_Chef.Models.ViewModels
@@ -32,4 +33,7 @@
 
 <div>
     @* @Html.PropertyFor(x => x.CurrentPage.Text) *@
-</div>                 
+</div>
+
+<h2>Region</h2>
+<h3>@Html.Translate("/property/enum/region/" + Model.CurrentPage.Region)</h3>

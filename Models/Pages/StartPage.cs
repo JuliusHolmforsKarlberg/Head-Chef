@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Head_Chef.Business.Enums;
+using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
 
 namespace Head_Chef.Models.Pages
@@ -31,7 +32,10 @@ namespace Head_Chef.Models.Pages
         [AllowedTypes(typeof(CarouselPage), typeof(CarouselBlock))]
         public virtual ContentArea Carousel { get; set; }
 
-        
+
+        [SelectOneEnum(typeof(Region))]
+        [CultureSpecific]
+        public virtual Region Region { get; set; }
 
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }
