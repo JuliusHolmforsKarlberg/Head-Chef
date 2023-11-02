@@ -1,0 +1,29 @@
+﻿﻿@using EPiServer.Framework.Localization;
+@using EPiServer.ServiceLocation;
+@using EPiServer.Web.Mvc.Html
+@using Head_Chef.Models.Pages;
+@using Head_Chef.Models.ViewModels
+
+@model RecipePageViewModel
+
+<div class=" bg-body-tertiary">
+    <div class=" container-sm">
+        <h1>@Model.CurrentPage.Title</h1>
+        <div class="py-5">
+            <div class="card shadow-sm">
+                <div class="row g-0">
+                    <div class="col-lg-4">
+                        <img src="@Model.CurrentPage.Image" class="h-100 w-100 overflow-hidden object-fit-cover rounded-start" alt="@Model.CurrentPage.Title">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-body">
+                            <h2 class="card-title">@Model.CurrentPage.Title</h2>
+                            <p class="card-text">@Html.Raw(Model.CurrentPage.Summary)</p>
+                            <p class="card-text">@Html.Raw(Model.CurrentPage.Instructions)</p>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,12 +9,10 @@ namespace Head_Chef.Models.ViewModels
         {
         }
 
-        //public List<MoviesViewModel.Search> Movies { get; set; }
-
-        //public MovieViewModel.Root Movie { get; set; }
-
         public List<RecipeCardsViewModel.Result> Recipes { get; set; }
 
-        public RecipeViewModel.Root Recipe { get; set; }
+        public int TotalResults { get; set; }
+
+        //public RecipeViewModel.Root Recipe { get; set; }
     }
 }

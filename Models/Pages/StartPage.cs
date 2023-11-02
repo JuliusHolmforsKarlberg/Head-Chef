@@ -1,4 +1,5 @@
 ﻿using Head_Chef.Business.Enums;
+//using Head_Chef.Models.Blocks;
 using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
 
@@ -18,7 +19,8 @@ namespace Head_Chef.Models.Pages
             typeof(SearchPage),
             typeof(XmlSitemap),
             typeof(FindPage),
-            typeof(ErrorPage)
+            typeof(ErrorPage),
+            typeof(MyRecipesPage)
         }
     )]
     public class StartPage : SitePageData
@@ -31,6 +33,15 @@ namespace Head_Chef.Models.Pages
         )]
         [AllowedTypes(typeof(CarouselPage), typeof(CarouselBlock))]
         public virtual ContentArea Carousel { get; set; }
+
+        //[Display(
+        //    GroupName = SystemTabNames.Content,
+        //    Order = 20,
+        //    Name = "Recipes",
+        //    Description = ""
+        //)]
+        //[AllowedTypes(typeof(RecipePage), typeof(RecipeBlock))]
+        //public virtual ContentArea Recipe { get; set; }
 
 
         [SelectOneEnum(typeof(Region))]

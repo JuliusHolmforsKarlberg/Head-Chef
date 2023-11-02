@@ -24,17 +24,18 @@ namespace Head_Chef.Controllers
         var settingsPage = settingsPages.FirstOrDefault();
         var model = new StartPageViewModel(currentPage);
 
-        //if (settingsPage != null)
-        //{
-        //    var parent = settingsPage.MoviesContainer;
 
-        //    if (parent != null)
-        //    {
-        //        //model.Movies = _contentLoader.GetChildren<MoviePage>(parent);
-        //    }
-        //}
+            if (settingsPage != null)
+            {
+                var parent = settingsPage.RecipesContainer;
 
-        return View(model);
+                if (parent != null)
+                {
+                    model.Recipes = _contentLoader.GetChildren<RecipePage>(parent);
+                }
+            }
+
+            return View(model);
     }
 }
 }
