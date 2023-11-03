@@ -19,6 +19,9 @@
                         <div class="card-body">
                             <h2 class="card-title">@Model.CurrentPage.Title</h2>
                             <p class="card-text">@Html.Raw(Model.CurrentPage.Summary)</p>
+                            <ul class="pb-3">
+                                @Html.Raw(Model.CurrentPage.Ingredients)
+                            </ul>
                             <p class="card-text">@Html.Raw(Model.CurrentPage.Instructions)</p>
                         </div>
                     </div>
