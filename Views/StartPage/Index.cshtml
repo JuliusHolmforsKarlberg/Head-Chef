@@ -10,10 +10,38 @@
 @* @await Component.InvokeAsync("Carousel") *@
 
 @Html.PropertyFor(x => x.CurrentPage.Carousel)
+@*@Html.PropertyFor(x => x.CurrentPage.Recipe)*@
 
-<div class="album py-5 bg-body-tertiary">
-    <div class="container">
+@*<div class="album py-5 bg-body-tertiary">*@
+    <div class="container py-5">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+
+            @if(Model.Recipes != null)
+            {
+            @foreach (var item in Model.Recipes.Take(8)) @* <---NYTT*@
+                {
+                    <div class="col">
+                    <div class="card h-100">   @* shadow-sm h-100*@
+                        
+                            <img src="@item.Image" class="card-img-top img-fluid " /> @* width="100%" height="100% w-100 " *@
+                                <div class="card-body">
+                            <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link">
+                                <h2 class="card-title h6">@item.Title </h2>
+                            </a>
+                                @*<p class="card-text">@item.Summary</p>*@
+                                
+                                </div>
+                            <div class="card-footer">
+                                <i class="bi bi-clock "></i>
+                                <span>@item.ReadyInMinutes min</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                }
+            }
+            
+
             @* @foreach (var item in Model.Movies)
             {
                 <div class="col">
@@ -29,7 +57,7 @@
             } *@
         </div>
     </div>
-</div>
+@*</div>*@
 
 <div>
     @* @Html.PropertyFor(x => x.CurrentPage.Text) *@

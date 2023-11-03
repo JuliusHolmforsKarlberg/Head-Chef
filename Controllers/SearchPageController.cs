@@ -32,30 +32,27 @@ namespace Head_Chef.Controllers
             if (status.IsSuccessStatusCode)
             {
                 var result = response.Content.ReadAsStringAsync();
-                var recipes = JsonConvert.DeserializeObject<RecipeCardsViewModel.Root>(result.Result); // MoviesViewModel är den kortare
+                var recipes = JsonConvert.DeserializeObject<RecipeCardsViewModel.Root>(result.Result);
 
                 if (recipes != null)
                 {
-                    //var parent = GetParent();
+                    var parent = GetParent();
 
-                    //if (parent != null) // Här ligger felet - parent == null dvs RecipesContainer är tom i SettingsPage
-                    //{
-                    //    var filteredRecipes = new List<RecipeCardsViewModel.Result>();
+                    if (parent != null) 
+                    {
+                        var filteredRecipes = new List<RecipeCardsViewModel.Result>();
 
-                    //    foreach (var item in recipes.Results.ToList())
-                    //    {
-                    //        //if (!MovieExists(parent, item.ImdbID))
-                    //        //{
-                    //        //    filteredMovies.Add(item);
-                    //        //}
-                    //        filteredRecipes.Add(item);
-                    //    }
-
-                    //    //model.Movies = filteredMovies;
-                    //    model.Recipes = filteredRecipes;
-                    //}
-
-                    model.Recipes = recipes.Results;
+                        foreach (var item in recipes.Results.ToList())
+                        {
+                            if (!RecipeExists(parent, item.Id))
+                            {
+                                filteredRecipes.Add(item);
+                            }
+                            //filteredRecipes.Add(item);
+                        }
+                        model.Recipes = filteredRecipes;
+                    }
+                    model.TotalResults = recipes.TotalResults;
                 }
             }
 
@@ -66,7 +63,7 @@ namespace Head_Chef.Controllers
         public async Task<IActionResult> AddAsync(SearchPage currentPage, string id)
         {
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/complexSearch{id}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.spoonacular.com/recipes/{id}/information?apiKey={apiKey}");
             var response = await client.SendAsync(request);
             var status = response.EnsureSuccessStatusCode();
             var model = new SearchPageViewModel(currentPage);
@@ -74,24 +71,30 @@ namespace Head_Chef.Controllers
             if (status.IsSuccessStatusCode)
             {
                 var result = response.Content.ReadAsStringAsync();
-                var movie = JsonConvert.DeserializeObject<MovieViewModel.Root>(result.Result);
+                //var recipe = JsonConvert.DeserializeObject<SimplyfiedRecipeViewModel.Root>(result.Result);
+                var recipe = JsonConvert.DeserializeObject<RecipePageViewModel>(result.Result);
 
-                if (movie != null)
+                if (recipe != null)
                 {
                     var parent = GetParent();
 
-                    if (parent != null)
+                    if(parent != null)
                     {
-                        var page = _contentRepository.GetDefault<MoviePage>(parent);
+                        var ingredients = recipe.ExtendedIngredients.ToList();                        
+                        var ingredientsString = string.Join("</li><li>", ingredients.Select(x => x.Original));
+                        var ingredientsText = string.Concat("<li>", ingredientsString, "</ li >");
 
-                        page.Name = movie.Title;
-                        page.Title = movie.Title;
-                        page.Poster = movie.Poster != null ? movie.Poster : "~/static/img/default-poster.jpg";
-                        page.Year = movie.Year;
-                        page.ImdbRating = movie.ImdbRating;
-                        page.ImdbID = movie.ImdbID;
-                        page.Genre = movie.Genre;
-                        page.Plot = movie.Plot;
+                        var page = _contentRepository.GetDefault<RecipePage>(parent);
+
+                        page.Name = recipe.Title;
+                        page.Title = recipe.Title;
+                        page.Image = recipe.Image;
+                        page.Summary = recipe.Summary;
+                        page.Instructions = recipe.Instructions;
+                        page.Ingredients = ingredientsText;
+                        page.ReadyInMinutes = recipe.ReadyInMinutes;
+                        page.SpoonacularSourceUrl = recipe.SpoonacularSourceUrl;
+                        page.Id = recipe.Id;
 
                         _contentRepository.Save(page, EPiServer.DataAccess.SaveAction.Publish);
                     }
@@ -111,7 +114,6 @@ namespace Head_Chef.Controllers
 
             if (settingsPage != null)
             {
-                //var parent = settingsPage.MoviesContainer; //här
                 var parent = settingsPage.RecipesContainer;
 
                 if (parent != null)
@@ -124,9 +126,9 @@ namespace Head_Chef.Controllers
         }
 
 
-        private bool MovieExists(ContentReference parent, string imdbID)
+        private bool RecipeExists(ContentReference parent, int Id)
         {
-            var child = _contentLoader.GetChildren<MoviePage>(parent).Where(x => x.ImdbID == imdbID).FirstOrDefault();
+            var child = _contentLoader.GetChildren<RecipePage>(parent).Where(x => x.Id == Id).FirstOrDefault();
 
             if (child == null)
             {
