@@ -18,7 +18,9 @@ namespace Head_Chef.Models.Pages
             typeof(SearchPage),
             typeof(XmlSitemap),
             typeof(FindPage),
-            typeof(ErrorPage)
+            typeof(ErrorPage),
+            typeof(FormsPage),
+            
         }
     )]
     public class StartPage : SitePageData

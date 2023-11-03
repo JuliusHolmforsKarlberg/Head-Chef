@@ -83,8 +83,8 @@ namespace Head_Chef
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStatusCodePagesWithReExecute("/error/{0}");
-            app.UseNotFoundHandler();
+          //  app.UseStatusCodePagesWithReExecute("/error/{0}");
+          //  app.UseNotFoundHandler();
 
             app.UseStaticFiles();
             app.UseRouting();
