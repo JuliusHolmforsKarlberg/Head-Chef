@@ -45,23 +45,31 @@ namespace Head_Chef.Models.Pages
         public virtual string Instructions { get; set; } = string.Empty;
 
         [Display(
-            Name = "Time until ready",
+            Name = "Ingredients",
             GroupName = SystemTabNames.Content,
             Order = 50
+        )]
+        [UIHint(UIHint.Textarea)]
+        public virtual string Ingredients { get; set; } = string.Empty;
+
+        [Display(
+            Name = "Time until ready",
+            GroupName = SystemTabNames.Content,
+            Order = 60
         )]
         public virtual int ReadyInMinutes { get; set; }
 
         [Display(
             Name = "Source url",
             GroupName = SystemTabNames.Content,
-            Order = 60
+            Order = 70
         )]
         public virtual string SpoonacularSourceUrl { get; set; } = string.Empty;
 
         [Display(
             Name = "Id on Spoontacular",
             GroupName = SystemTabNames.Content,
-            Order = 70
+            Order = 80
         )]
         [Editable(false)]
         public virtual int Id { get; set; }

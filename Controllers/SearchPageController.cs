@@ -80,6 +80,10 @@ namespace Head_Chef.Controllers
 
                     if(parent != null)
                     {
+                        var ingredients = recipe.ExtendedIngredients.ToList();                        
+                        var ingredientsString = string.Join("</li><li>", ingredients.Select(x => x.Original));
+                        var ingredientsText = string.Concat("<li>", ingredientsString, "</ li >");
+
                         var page = _contentRepository.GetDefault<RecipePage>(parent);
 
                         page.Name = recipe.Title;
@@ -87,6 +91,7 @@ namespace Head_Chef.Controllers
                         page.Image = recipe.Image;
                         page.Summary = recipe.Summary;
                         page.Instructions = recipe.Instructions;
+                        page.Ingredients = ingredientsText;
                         page.ReadyInMinutes = recipe.ReadyInMinutes;
                         page.SpoonacularSourceUrl = recipe.SpoonacularSourceUrl;
                         page.Id = recipe.Id;
