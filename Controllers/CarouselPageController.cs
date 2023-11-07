@@ -6,11 +6,11 @@ namespace Head_Chef.Controllers
 {
     public class CarouselPageController : PageControllerBase<CarouselPage>
     {
-    public IActionResult Index(CarouselPage currentPage)
-    {
-        //var model = new StartPageViewModel(currentPage);
+        public IActionResult Index(CarouselPage currentPage)
+        {
+            //var model = new StartPageViewModel(currentPage);
 
-        return View(currentPage);
+            return View(currentPage);
+        }
     }
-}
 }

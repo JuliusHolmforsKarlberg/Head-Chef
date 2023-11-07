@@ -7,18 +7,18 @@ using Head_Chef.Business.Extensions;
 namespace Head_Chef.Business.ScheduledJobs
 {
     [ScheduledPlugIn(
-        DisplayName = "Delete Movie Pages",
-        Description = "This job deletes movie pages",
+        DisplayName = "Delete Recipe Pages",
+        Description = "This job deletes recipe pages",
         GUID = "A29ED108-1813-4153-9931-E109FF235307"
     )]
-    public class DeleteMoviePages : ScheduledJobBase
+    public class DeleteRecipePages : ScheduledJobBase
     {
         private readonly IContentLoader _contentLoader;
         private readonly ISiteDefinitionRepository _siteDefinitionRepository;
         private readonly IContentRepository _contentRepository;
         private bool _stopSignaled;
 
-        public DeleteMoviePages(IContentLoader contentLoader,
+        public DeleteRecipePages(IContentLoader contentLoader,
             ISiteDefinitionRepository siteDefinitionRepository, IContentRepository contentRepository)
         {
             _contentLoader = contentLoader;
@@ -35,10 +35,10 @@ namespace Head_Chef.Business.ScheduledJobs
 
         public override string Execute()
         {
-            var moviePages = GetMoviePages();
+            var recipePages = GetRecipePages();
             var status = 0;
 
-            foreach (var item in moviePages)
+            foreach (var item in recipePages)
             {
                 _contentRepository.Delete(item.ContentLink, true, EPiServer.Security.AccessLevel.NoAccess);
 
@@ -50,18 +50,18 @@ namespace Head_Chef.Business.ScheduledJobs
                 return "The job has beeen cancelled";
             }
 
-            return $"Movie pages deleted: {status}";
+            return $"Recipe pages deleted: {status}";
         }
 
-        private IEnumerable<MoviePage> GetMoviePages()
+        private IEnumerable<RecipePage> GetRecipePages()
         {
             var contentReference = _siteDefinitionRepository.List().FirstOrDefault().StartPage;
             var startPage = _contentLoader.Get<StartPage>(contentReference);
-            var moviePages = new List<MoviePage>();
+            var recipePages = new List<RecipePage>();
 
-            startPage.GetDescendantsOfType(moviePages);
+            startPage.GetDescendantsOfType(recipePages);
 
-            return moviePages;
+            return recipePages;
         }
     }
 }

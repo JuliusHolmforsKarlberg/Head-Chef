@@ -12,6 +12,6 @@ namespace Head_Chef.Models.Pages
             Order = 10
             )]
         [CultureSpecific]
-        public virtual string Header { get; set; }   
+        public virtual string? Header { get; set; }   
     }
 }
