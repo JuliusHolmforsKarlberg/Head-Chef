@@ -2,7 +2,7 @@
 
 namespace Head_Chef.Components.Carousel
 {
-    public class CarouselViewModel
+    public class ContactViewModel
     {
         public List<CarouselViewPageModel> Pages { get; set; } = new List<CarouselViewPageModel>();
     }
