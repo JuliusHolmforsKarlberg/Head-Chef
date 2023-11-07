@@ -1,0 +1,28 @@
+﻿@using EPiServer.Web.Mvc.Html
+@using Head_Chef.Models.ViewModels;
+
+@model AllArticlesViewModel
+
+<div class="py-5 bg-body-tertiary">
+    <div class="container">
+        <h1>All Articles</h1> 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 my-3">
+            @foreach (var item in Model.AllArticles)
+            {
+                <div class="col">
+                    <div class="card ">
+                        <img src="@Url.ContentUrl(@item.Image)" class="card-img-top img-fluid" />
+                        <div class="card-body">
+                            <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link">
+                                <h2 class="card-title h6">@item.Heading </h2>
+                            </a>
+                            <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
+                                @Html.Raw(item.Body)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

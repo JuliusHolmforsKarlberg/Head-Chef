@@ -1,0 +1,12 @@
+﻿@using Head_Chef.Models.ViewModels
+@using EPiServer.Web.Mvc.Html
+
+@model ArticlePageViewModel
+
+<div class="container">
+    <img src="@Url.ContentUrl(Model.CurrentPage.Image)" class="img-fluid w-100" />
+    <h1 class="text-center">@Model.CurrentPage.Heading</h1>
+    <div>@Html.Raw(Model.CurrentPage.Body)</div>
+
+</div>
+

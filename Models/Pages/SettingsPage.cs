@@ -24,10 +24,10 @@ namespace Head_Chef.Models.Pages
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 20,
-            Name = "Movies",
-            Description = "Select the movies container"
+            Name = "All Articles",
+            Description = "Select the all articles page"
         )]
-        public virtual ContentReference MoviesContainer { get; set; }
+        public virtual ContentReference AllArticlesPage { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,
@@ -44,6 +44,14 @@ namespace Head_Chef.Models.Pages
             Description = "Select the my recipes page"
         )]
         public virtual ContentReference MyRecipesPage { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 50,
+            Name = "Articles",
+            Description = "Select the articles container"
+        )]
+        public virtual ContentReference ArticleContainer { get; set; }
 
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }

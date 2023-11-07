@@ -15,7 +15,8 @@ namespace Head_Chef.Models.Pages
         {
             typeof(CarouselPage),
             typeof(MoviePage),
-            typeof(RecipePage)
+            typeof(RecipePage),
+            typeof(ArticlePage)
         }
     )]
     public class ContainerPage : PageData, IContainerIcon
