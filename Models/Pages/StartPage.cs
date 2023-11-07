@@ -21,9 +21,9 @@ namespace Head_Chef.Models.Pages
             typeof(FindPage),
             typeof(ErrorPage),
             typeof(FormsPage),
-            
-            typeof(ErrorPage),
-            typeof(MyRecipesPage)
+            typeof(MyRecipesPage),
+            typeof(AllArticlesPage)
+
         }
     )]
     public class StartPage : SitePageData
