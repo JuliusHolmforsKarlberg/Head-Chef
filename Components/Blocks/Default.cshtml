@@ -22,7 +22,7 @@ img {
         @foreach (var item in Model.Pages)
         {
             <div class="carousel-item @item.Active">
-                <img src="@Url.ContentUrl(item.Page.Image)" />
+                <img src="@Url.ContentUrl(item.Page.Image)" alt="@Url.ContentUrl(item.Page.ImageDescription)" />
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1>@item.Page.Heading</h1>
