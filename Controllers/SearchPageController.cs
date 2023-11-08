@@ -82,7 +82,7 @@ namespace Head_Chef.Controllers
                     {
                         var ingredients = recipe.ExtendedIngredients.ToList();                        
                         var ingredientsString = string.Join("</li><li>", ingredients.Select(x => x.Original));
-                        var ingredientsText = string.Concat("<li>", ingredientsString, "</ li >");
+                        var ingredientsText = string.Concat("<li>", ingredientsString, "</li>");
 
                         var page = _contentRepository.GetDefault<RecipePage>(parent);
 

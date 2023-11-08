@@ -24,6 +24,15 @@ namespace Head_Chef.Models.Pages
 
         [Display(
             GroupName = SystemTabNames.Content,
+            Order = 15,
+            Name = "Image description",
+            Description = "Add a description for the image"
+        )]        
+        [CultureSpecific]
+        public virtual string ImageDescription { get; set; } = string.Empty;
+
+        [Display(
+            GroupName = SystemTabNames.Content,
             Order = 20
         )]
         [Required(AllowEmptyStrings = false)]

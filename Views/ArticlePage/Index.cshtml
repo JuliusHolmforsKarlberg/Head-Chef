@@ -4,7 +4,7 @@
 @model ArticlePageViewModel
 
 <div class="container">
-    <img src="@Url.ContentUrl(Model.CurrentPage.Image)" class="img-fluid w-100" />
+    <img src="@Url.ContentUrl(Model.CurrentPage.Image)" alt="@Url.ContentUrl(Model.CurrentPage.ImageDescription)" class="img-fluid w-100" />
     <h1 class="text-center">@Model.CurrentPage.Heading</h1>
     <div>@Html.Raw(Model.CurrentPage.Body)</div>
 

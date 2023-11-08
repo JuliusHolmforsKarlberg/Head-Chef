@@ -23,5 +23,14 @@ namespace Head_Chef.Models.Pages
         [Editable(false)]
         [CultureSpecific]
         public virtual string XmlSitemapDate { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Settings,
+            Order = 20,
+            Name = "Meta description",
+            Description = "Add a description for the page"
+        )]
+        [CultureSpecific]       
+        public virtual string MetaDescription { get; set; } = string.Empty;
     }
 }
