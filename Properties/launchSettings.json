@@ -3,51 +3,68 @@
     "Head-Chef": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:5000/"
     },
     "Per": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Per"
-      }
+      },
+      "applicationUrl": "https://localhost:5000/"
     },
     "Muntaha": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Muntaha"
-      }
+      },
+      "applicationUrl": "https://localhost:5000/"
     },
     "Oscar": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Oscar"
-      }
+      },
+      "applicationUrl": "https://localhost:5000/"
     },
     "Julius": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Julius"
-      }
+      },
+      "applicationUrl": "https://localhost:5000/"
     },
     "Simon": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Simon"
-      }
+      },
+      "applicationUrl": "https://localhost:5000/"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:5000/",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:5000/"
+      },
+      "distributionName": ""
+    },
+    "Headchef": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Headchef"
+      },
+      "applicationUrl": "https://localhost:5000/"
     }
   }
 }
-
