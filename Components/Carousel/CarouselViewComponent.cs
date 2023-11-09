@@ -17,7 +17,7 @@ namespace Head_Chef.Components.Carousel
         public IViewComponentResult Invoke()
         {
             var startPage = _contentLoader.Get<StartPage>(SiteDefinition.Current.StartPage);
-            var model = new CarouselViewModel();
+            var model = new ContactViewModel();
             var i = 0;
             var ii = 1;
 

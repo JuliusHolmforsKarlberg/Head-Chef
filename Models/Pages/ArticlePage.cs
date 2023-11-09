@@ -34,5 +34,14 @@ namespace Head_Chef.Models.Pages
         )]
         [UIHint(UIHint.Image)]
         public virtual ContentReference Image { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 40,
+            Name = "Image description",
+            Description = "Add a description for the image"
+        )]
+        [CultureSpecific]
+        public virtual string ImageDescription { get; set; } = string.Empty;
     }
 }

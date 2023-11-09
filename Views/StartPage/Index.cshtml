@@ -10,7 +10,7 @@
 @* @await Component.InvokeAsync("Carousel") *@
 
 @Html.PropertyFor(x => x.CurrentPage.Carousel)
-@*@Html.PropertyFor(x => x.CurrentPage.Recipe)*@
+@Html.PropertyFor(x => x.CurrentPage.ContactArea)
 
 @*<div class="album py-5 bg-body-tertiary">*@
     <div class="container py-5">
@@ -22,8 +22,8 @@
                 {
                     <div class="col">
                     <div class="card h-100">   @* shadow-sm h-100*@
-                        
-                            <img src="@item.Image" class="card-img-top img-fluid " /> @* width="100%" height="100% w-100 " *@
+
+                        <img src="@item.Image" class="card-img-top img-fluid" alt="@item.Title"/> @* width="100%" height="100% w-100 " *@
                                 <div class="card-body">
                             <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link">
                                 <h2 class="card-title h6">@item.Title </h2>

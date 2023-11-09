@@ -1,0 +1,8 @@
+﻿User-agent: *
+Disallow: /recipes/
+Disallow: /EPiServer/CMS/
+
+
+Allow: /
+
+Sitemap: https://localhost:5000/sitemap/

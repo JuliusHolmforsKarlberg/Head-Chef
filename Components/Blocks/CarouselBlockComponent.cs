@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Head_Chef.Components.Blocks
 {
-    public class CarouselBlockComponent : AsyncBlockComponent<CarouselBlock>
+    public class ContactBlockComponent : AsyncBlockComponent<CarouselBlock>
     {
         protected override async Task<IViewComponentResult> InvokeComponentAsync(CarouselBlock currentContent)
         {
