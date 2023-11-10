@@ -1,5 +1,4 @@
 ﻿using Head_Chef.Business.Enums;
-//using Head_Chef.Models.Blocks;
 using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
 
@@ -23,7 +22,8 @@ namespace Head_Chef.Models.Pages
             typeof(FormsPage),
             typeof(MyRecipesPage),
             typeof(AllArticlesPage),
-            typeof(CookiesPage)
+            typeof(CookiesPage),
+            typeof(ContactPage)
         }
     )]
     public class StartPage : SitePageData
@@ -39,7 +39,7 @@ namespace Head_Chef.Models.Pages
 
         [Display(
           GroupName = SystemTabNames.Content,
-          Order = 10,
+          Order = 20,
           Name = "Contact",
           Description = ""
       )]
