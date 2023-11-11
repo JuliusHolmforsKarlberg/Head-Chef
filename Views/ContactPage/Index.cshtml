@@ -1,7 +1,38 @@
-﻿@using EPiServer.Web.Mvc.Html;
-@using Head_Chef.Models.ViewModels;
+﻿@using EPiServer.Web.Mvc.Html
+@using Head_Chef.Models.ViewModels
 
 @model ContactPageViewModel
 
-@Html.PropertyFor(x => x.CurrentPage.ContactArea)
+<style>
+    /* Container för kontaktinformation */
+    .contact-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Rubrikstil */
+    .contact-heading {
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Styling för kontaktinformation */
+    .contact-info {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="contact-container">
+    <h2 class="contact-heading">@Html.PropertyFor(x => x.CurrentPage.ContactArea)</h2>
+</div>
+
 
