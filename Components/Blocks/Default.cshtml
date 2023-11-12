@@ -1,14 +1,19 @@
-﻿﻿@using Head_Chef.Components.Carousel
+﻿@using Head_Chef.Components.Carousel
 @using EPiServer.Web.Mvc.Html
 
 @model CarouselBlockViewModel
 
 <style type="text/css">
-img {
+    img {
         height: 100%;
         object-fit: cover;
         width: 100%;
-}    
+    }
+
+    /* Add this style to remove margin for the carousel */
+    #myCarousel {
+        margin-top: 0;
+    }
 </style>
 
 <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
