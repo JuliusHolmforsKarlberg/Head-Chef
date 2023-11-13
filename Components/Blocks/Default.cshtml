@@ -1,14 +1,14 @@
-﻿﻿@using Head_Chef.Components.Carousel
+﻿@using Head_Chef.Components.Carousel
 @using EPiServer.Web.Mvc.Html
 
 @model CarouselBlockViewModel
 
 <style type="text/css">
-img {
+    img {
         height: 100%;
         object-fit: cover;
         width: 100%;
-}    
+    }
 </style>
 
 <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
@@ -22,7 +22,7 @@ img {
         @foreach (var item in Model.Pages)
         {
             <div class="carousel-item @item.Active">
-                <img src="@Url.ContentUrl(item.Page.Image)" alt="@Url.ContentUrl(item.Page.ImageDescription)" />
+                <img src="@Url.ContentUrl(item.Page.Image)" alt="@item.Page.ImageDescription" />
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1>@item.Page.Heading</h1>

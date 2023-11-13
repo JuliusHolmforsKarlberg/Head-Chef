@@ -1,31 +1,90 @@
-﻿﻿@using Head_Chef.Models.ViewModels
-
+﻿@using Head_Chef.Models.ViewModels
 @model FindPageViewModel
 
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            @using (Html.BeginForm(FormMethod.Post))
-            {
-                <input type="text" tabindex="1" name="q" value="@Model.SearchQuery" />
-                <input type="submit" tabindex="2" class="btn btn-primary my-2" value="Search" />
-            }
+<style>
+    /* Justera utseendet för söksektionen */
+    .search-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+        height: 100vh;
+    }
+
+    /* Centrera formuläret och justera inmatningsfält och knapp */
+    .search-form {
+        text-align: center;
+    }
+
+    .search-input {
+        width: 80%;
+        padding: 10px;
+        margin: 5px 10px;
+        font-size: 16px;
+    }
+
+    .search-button {
+        padding: 13px 40px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Justera utseendet för resultatsektionen */
+    .search-results {
+        margin-top: 20px;
+    }
+
+    .result-count {
+        font-style: italic;
+    }
+
+    /* Stil för resultatlänkar och text */
+    .result-item {
+        margin-bottom: 20px;
+    }
+
+    .result-title {
+        font-size: 18px;
+        color: #007bff;
+        margin-bottom: 5px;
+    }
+
+    .result-excerpt {
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+
+<section class="search-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 mx-auto search-form">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <input type="text" tabindex="1" name="q" class="search-input" value="@Model.SearchQuery" />
+                    <input type="submit" tabindex="2" class="btn btn-primary my-2 search-button" value="Search" />
+                }
+            </div>
         </div>
     </div>
 </section>
 
 @if (Model.Results != null)
 {
-    <p>Your search for <i>@Model.SearchQuery</i> resulted in @Model.Results.Count() hits</p>
-    <div class="listResult">
-        <ul>
-            @foreach (var item in Model.Results)
-            {
-                <li>
-                    <h4><a href="@item.Url">@item.Title</a></h4>
-                    @item.Excerpt
-                </li>
-            }
-        </ul>
+    <div class="container search-results">
+        <p class="result-count">Your search for <i>@Model.SearchQuery</i> resulted in @Model.Results.Count() hits</p>
+        <div class="listResult">
+            <ul>
+                @foreach (var item in Model.Results)
+                {
+                    <li class="result-item">
+                        <h4 class="result-title"><a href="@item.Url">@item.Title</a></h4>
+                        <p class="result-excerpt">@item.Excerpt</p>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 }
+
