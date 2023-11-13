@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<searchresult>Sökresultat</searchresult>
+	<property>
+		<enum>
+			<recipecategory>
+				<maincourse>Main Course</maincourse>
+				<appetizer>Appetizer</appetizer>
+				<dessert>Dessert</dessert>
+				<!-- Lägg till fler kategorier efter behov -->
+			</recipecategory>
+		</enum>
+	</property>
+</configuration>
