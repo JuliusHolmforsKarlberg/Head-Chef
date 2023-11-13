@@ -7,6 +7,7 @@ using EPiServer.Web.Routing;
 using Geta.NotFoundHandler.Infrastructure.Configuration;
 using Geta.NotFoundHandler.Infrastructure.Initialization;
 using Geta.NotFoundHandler.Optimizely.Infrastructure.Configuration;
+using Geta.Optimizely.Sitemaps;
 using Head_Chef.Business.Extensions;
 using Head_Chef.Business.Services;
 using Head_Chef.Business.Services.Interfaces;
@@ -73,7 +74,13 @@ namespace Head_Chef
                 o.AutomaticRedirectsEnabled = true;
             });
 
-            services.AddSingleton<IXmlSitemapService, XmlSitemapService>();
+            //services.AddSingleton<IXmlSitemapService, XmlSitemapService>();
+            services.AddSitemaps(x =>
+            {
+                x.EnableLanguageDropDownInAdmin = true;
+                x.EnableRealtimeCaching = true;
+                x.EnableRealtimeSitemap = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

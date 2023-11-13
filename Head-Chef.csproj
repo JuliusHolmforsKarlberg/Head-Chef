@@ -21,6 +21,7 @@
 		<PackageReference Include="EPiServer.Framework" Version="12.19.0" />
 		<PackageReference Include="Geta.NotFoundHandler.Admin" Version="5.0.8" />
 		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="5.0.8" />
+		<PackageReference Include="Geta.Optimizely.Sitemaps" Version="3.1.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
 		<PackageReference Include="Serilog" Version="3.0.1" />
 		<PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
