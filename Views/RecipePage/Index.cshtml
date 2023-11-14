@@ -7,7 +7,7 @@
 @model RecipePageViewModel
 
 <div class=" bg-body-tertiary">
-    <div class=" container-sm">
+    <div class=" container-sm pt-5">
         <h1>@Model.CurrentPage.Title</h1>
         <div class="py-5">
             <div class="card shadow-sm">
@@ -16,7 +16,7 @@
                         <img src="@Model.CurrentPage.Image" class="h-100 w-100 overflow-hidden object-fit-cover rounded-start" alt="@Model.CurrentPage.Title">
                     </div>
                     <div class="col-lg-8">
-                        <div class="card-body">
+                        <div class="card-body p-5">
                             <h2 class="card-title">@Model.CurrentPage.Title</h2>
                             <p class="card-text">@Html.Raw(Model.CurrentPage.Summary)</p>
                             <ul class="pb-3">

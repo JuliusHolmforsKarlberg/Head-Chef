@@ -3,11 +3,11 @@
 
 <style>
     /* Justera utseendet för söksektionen */
-    .search-section {
+    /*.search-section {
         background-color: #f8f9fa;
         padding: 50px 0;
         height: 100vh;
-    }
+    }*/
 
     /* Centrera formuläret och justera inmatningsfält och knapp */
     .search-form {
@@ -56,14 +56,14 @@
     }
 </style>
 
-<section class="search-section">
+<section class="search-section py-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-8 mx-auto search-form">
                 @using (Html.BeginForm(FormMethod.Post))
                 {
-                    <input type="text" tabindex="1" name="q" class="search-input" value="@Model.SearchQuery" />
-                    <input type="submit" tabindex="2" class="btn btn-primary my-2 search-button" value="Search" />
+                    <input type="text" tabindex="0" name="q" class="search-input" value="@Model.SearchQuery" />
+                    <input type="submit" tabindex="1" class="btn btn-primary my-2 search-button" value="Search" />
                 }
             </div>
         </div>

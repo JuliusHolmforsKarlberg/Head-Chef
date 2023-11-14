@@ -4,19 +4,19 @@
 @model ErrorPageViewModel
 
 <style>
-    body {
+    /*body {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100vh;
         margin: 0;
-        font-family: 'Arial', sans-serif; /* Använd valfri teckensnitt */
-        background-color: #f8f9fa; /* Ljus bakgrundsfärg */
-    } 
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+    } */
 
     .error-container {
         text-align: center;
-        padding: 20px;
+        padding: 64px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ljus skugga för kontur */
         background-color: #fff; /* Vit bakgrundsfärg */
@@ -35,10 +35,13 @@
     }
 </style>
 
-<div class="error-container">
-    <h2>@Html.PropertyFor(x => x.CurrentPage.Header)</h2>
-    <p class="p">Please try again :)</p>
+<div class="d-flex align-items-center justify-content-center">
+    <div class="error-container">
+        <h2>@Html.PropertyFor(x => x.CurrentPage.Header)</h2>
+        <p class="p">Please try again :)</p>
+    </div>
 </div>
+
 
 
 
