@@ -20,9 +20,10 @@ namespace Head_Chef.Business.Enums
 
     public new void CreateDisplayMetadata(DisplayMetadataProviderContext context)
     {
-        SelectionFactoryType = typeof(RegionEnumSelectorFactory);
+            //SelectionFactoryType = typeof(RegionEnumSelectorFactory);
+            SelectionFactoryType = typeof(ImageOrientationEnumSelectorFactory);
 
-        base.CreateDisplayMetadata(context);
+            base.CreateDisplayMetadata(context);
     }
 }
 }

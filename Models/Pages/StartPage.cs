@@ -48,9 +48,9 @@ namespace Head_Chef.Models.Pages
         //public virtual ContentArea Recipe { get; set; }
 
 
-        [SelectOneEnum(typeof(Region))]
-        [CultureSpecific]
-        public virtual Region Region { get; set; }
+        //[SelectOneEnum(typeof(Region))]
+        //[CultureSpecific]
+        //public virtual Region Region { get; set; }
 
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }

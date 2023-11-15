@@ -1,4 +1,5 @@
 ﻿using EPiServer.Web;
+using Head_Chef.Business.Enums;
 using Head_Chef.Models.Pages;
 using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
@@ -38,6 +39,16 @@ namespace Head_Chef.Models.Pages
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 40,
+            Name = "Image orientation",
+            Description = "Should the image be desplayed to the left or to the right of the text"
+        )]
+        [SelectOneEnum(typeof(Orientation))]
+        [CultureSpecific]
+        public virtual Orientation Orientation { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 50,
             Name = "Image description",
             Description = "Add a description for the image"
         )]
