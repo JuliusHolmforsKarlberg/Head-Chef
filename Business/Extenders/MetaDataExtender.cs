@@ -14,6 +14,10 @@ namespace Head_Chef.Business.Extenders
                     property.GroupName = "EPiServerCMS_SettingsPanel";
                     property.Order = 1;
                 }
+                if (property.PropertyName == "PageVisibleInMenu")
+                {
+                    property.ShowForEdit = false;
+                }
 
                 foreach (var attribute in property.Attributes)
                 {

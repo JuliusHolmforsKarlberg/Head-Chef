@@ -4,6 +4,7 @@ using static Head_Chef.Globals;
 
 namespace Head_Chef.Models.Pages
 {
+
     [ContentType(
         GUID = "32526CA9-D56E-4AF9-B43A-1092A395174F",
         GroupName = GroupNames.Specialized,
@@ -13,6 +14,14 @@ namespace Head_Chef.Models.Pages
     [AvailableContentTypes(Availability.None)]
     public class SettingsPage : SitePageData, ISettingsIcon
     {
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 10,
+            Name = "Navigation",
+            Description = ""
+        )]        
+        public virtual ContentArea Navigation { get; set; }
+
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 10,
