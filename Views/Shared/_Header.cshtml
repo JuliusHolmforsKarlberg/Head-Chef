@@ -28,12 +28,15 @@
 
                     if (!string.Equals(Model.CurrentPage.Language.Name, language.Language.Name, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        var flag = "/static/img/flag_" + language.Language.Name + ".svg";
+                        var flag = Url.Content("~/gfx/flag.webp");
 
                         <li><a href="@Url.ContentUrl(link)"><img src="@flag" />@LocalizationService.Current.GetString("/common/languageSelector")</a></li>
                     }
                 }
             </ul>
+
+
+
 
 @*             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">

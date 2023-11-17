@@ -46,10 +46,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\gfx\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Include="wwwroot\Robots.txt" />
 	</ItemGroup>
 </Project>
