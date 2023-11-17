@@ -16,12 +16,16 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
-                    @foreach(var item in Model.Layout.SettingsPage.Navigation.FilteredItems)
+                    @if (Model.Layout.SettingsPage.Navigation != null)
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" href="@(_contentLoader.Get<SitePageData>(item.ContentLink).LinkURL)">@(_contentLoader.Get<SitePageData>(item.ContentLink).Name)</a>
-                        </li>                        
-                    }
+                        @foreach (var item in Model.Layout.SettingsPage.Navigation.FilteredItems)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@(_contentLoader.Get<SitePageData>(item.ContentLink).LinkURL)">@(_contentLoader.Get<SitePageData>(item.ContentLink).Name)</a>
+                            </li>
+                        }
+                    }                  
+
                     
                 </ul>
                 <form class="d-flex" role="search" action="@Url.ContentUrl(Model.Layout.SettingsPage.SearchPage)">
