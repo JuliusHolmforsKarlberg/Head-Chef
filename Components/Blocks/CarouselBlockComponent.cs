@@ -1,5 +1,6 @@
 ﻿using EPiServer.Web.Mvc;
 using Head_Chef.Components.Carousel;
+using Head_Chef.Models.Blocks;
 using Head_Chef.Models.Pages;
 using Head_Chef.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;

@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Head_Chef.Models.Pages;
+using System.ComponentModel.DataAnnotations;
 using static Head_Chef.Globals;
 
-namespace Head_Chef.Models.Pages
+namespace Head_Chef.Models.Blocks
 {
     [ContentType(
         GUID = "7C4DCD42-5F1E-48F1-A699-C675E1E0CAFF",
