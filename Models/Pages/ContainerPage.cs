@@ -14,7 +14,7 @@ namespace Head_Chef.Models.Pages
         Include = new[]
         {
             typeof(CarouselPage),
-            typeof(MoviePage),
+            //typeof(MoviePage),
             typeof(RecipePage),
             typeof(ArticlePage)
         }

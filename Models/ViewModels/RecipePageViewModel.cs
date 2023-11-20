@@ -1,4 +1,5 @@
 ﻿using Head_Chef.Models.Pages;
+using Models.DDS;
 using Newtonsoft.Json;
 using static Head_Chef.Models.ViewModels.RecipeViewModel;
 
@@ -83,6 +84,10 @@ namespace Head_Chef.Models.ViewModels
 
         [JsonProperty("extendedIngredients")]
         public List<ExtendedIngredient> ExtendedIngredients { get; set; }
+
+        public IEnumerable<Comment> Comments { get; set; }
+
+        public string Comment { get; set; } = string.Empty;
     }
 
     public class ExtendedIngredient

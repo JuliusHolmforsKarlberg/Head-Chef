@@ -1,4 +1,5 @@
 ﻿@using Head_Chef.Models.ViewModels
+﻿@using EPiServer.Framework.Localization;
 @model FindPageViewModel
 
 <style>
@@ -58,6 +59,7 @@
 
 <section class="search-section py-5">
     <div class="container">
+        <h1>@LocalizationService.Current.GetString("/find")</h1>
         <div class="row">
             <div class="col-lg-6 col-md-8 mx-auto search-form">
                 @using (Html.BeginForm(FormMethod.Post))

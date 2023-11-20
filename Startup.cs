@@ -81,6 +81,7 @@ namespace Head_Chef
                 x.EnableRealtimeCaching = true;
                 x.EnableRealtimeSitemap = true;
             });
+            services.AddSingleton<ICommentService, CommentService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

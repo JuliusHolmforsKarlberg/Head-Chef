@@ -2,6 +2,7 @@
 <languages>
 	<language name="English" id="en">
 		<searchresult>Search result</searchresult>
+		<find>Search on this site</find>
 		<property>
 			<enum>				
 				<orientation>
@@ -13,6 +14,7 @@
 	</language>
 	<language name="Svenska" id="sv">
 		<searchresult>Sökresultat</searchresult>
+		<find>Sök på den här webbplatsen</find>
 		<property>
 			<enum>				
 				<orientation>
