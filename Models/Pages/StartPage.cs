@@ -17,13 +17,11 @@ namespace Head_Chef.Models.Pages
             typeof(SettingsPage),
             typeof(ContainerPage),
             typeof(SearchPage),
-            typeof(XmlSitemap),
             typeof(FindPage),
             typeof(ErrorPage),
             typeof(FormsPage),
             typeof(MyRecipesPage),
             typeof(AllArticlesPage),
-            typeof(CookiesPage),
             typeof(ContactPage)
         }
     )]
@@ -37,21 +35,6 @@ namespace Head_Chef.Models.Pages
         )]
         [AllowedTypes(typeof(CarouselPage), typeof(CarouselBlock))]
         public virtual ContentArea Carousel { get; set; }
-
-
-        //[Display(
-        //    GroupName = SystemTabNames.Content,
-        //    Order = 20,
-        //    Name = "Recipes",
-        //    Description = ""
-        //)]
-        //[AllowedTypes(typeof(RecipePage), typeof(RecipeBlock))]
-        //public virtual ContentArea Recipe { get; set; }
-
-
-        //[SelectOneEnum(typeof(Region))]
-        //[CultureSpecific]
-        //public virtual Region Region { get; set; }
 
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }
