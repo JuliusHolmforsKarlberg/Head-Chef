@@ -7,11 +7,21 @@
 
 @model IPageViewModel<SitePageData>
 @inject IContentLoader _contentLoader;
+@*@{
+    var currentLanguage = _contentLoader.Get<SitePageData>(contentL).Language;
+}*@
+@{
+    var urlLanguage = "";
+    if (!@Model.CurrentPage.IsMasterLanguageBranch)
+    {
+        urlLanguage = $"/{Model.Layout.SettingsPage.Language}";
+    }
+}
 
 <header data-bs-theme="dark">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Head Chef</a>
+            <a class="navbar-brand" href="/">Head Chef</a>  @*Få till rätt hem-länk här*@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,15 +53,23 @@
 
                     @if (Model.Layout.SettingsPage.Navigation != null)
                     {
+                        
+                        @*var urlLanguage = "";
+                        if (!@Model.CurrentPage.IsMasterLanguageBranch)
+                        {
+                            urlLanguage = $"/{Model.Layout.SettingsPage.Language}";
+                        }*@                       
+
                         @foreach (var item in Model.Layout.SettingsPage.Navigation.FilteredItems)
                         {
+                            
                             <li class="nav-item">
-                                <a class="nav-link" href="@(_contentLoader.Get<SitePageData>(item.ContentLink).LinkURL)">@(_contentLoader.Get<SitePageData>(item.ContentLink).Name)</a>
+                                <a class="nav-link" href="@urlLanguage/@(_contentLoader.Get<SitePageData>(item.ContentLink).URLSegment)">
+                                    @(_contentLoader.Get<SitePageData>(item.ContentLink).Name)
+                                </a>
                             </li>
                         }
-                    }                  
-
-                    
+                    }
                 </ul> 
                 <form class="d-flex" role="search" action="@Url.ContentUrl(Model.Layout.SettingsPage.SearchPage)">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" value="">
