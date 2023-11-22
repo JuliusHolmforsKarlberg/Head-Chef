@@ -43,7 +43,7 @@ namespace Head_Chef
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>()
                 .TinyMceConfiguration();
-
+            services.AddSingleton<ICommentService, CommentService>();
 
             services.Configure<UploadOptions>(x =>
             {
@@ -52,8 +52,8 @@ namespace Head_Chef
 
             IServiceCollection serviceCollection = services.Configure<EPiServer.Find.FindOptions>(options =>
             {
-                options.DefaultIndex = "carl.schele_nackademin2023v001";
-                options.ServiceUrl = "https://demo04.find.episerver.net/SNRr6mO0axGL6CLGAPTGAZrOMFS1S9ZI";
+                options.DefaultIndex = "pernorin_headchef2";
+                options.ServiceUrl = "https://demo04.find.episerver.net/5TCUMC4KJVuNG7XsIwkfKuSWFkQFKrOv/";                
             });
 
             var connectionString = "Data Source=cms2-sqlserver.database.windows.net,1433;Initial Catalog=cms2_headchef;Persist Security Info=False;User ID=HeadChefAdmin;Password='BytMig123!~¨^';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -81,7 +81,7 @@ namespace Head_Chef
                 x.EnableRealtimeCaching = true;
                 x.EnableRealtimeSitemap = true;
             });
-            services.AddSingleton<ICommentService, CommentService>();
+            //services.AddSingleton<ICommentService, CommentService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
