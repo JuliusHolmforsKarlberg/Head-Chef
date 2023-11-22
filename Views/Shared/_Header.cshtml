@@ -6,6 +6,7 @@
 @using EPiServer.Web.Mvc.Html
 
 @model IPageViewModel<SitePageData>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @inject IContentLoader _contentLoader;
 @*@{
     var currentLanguage = _contentLoader.Get<SitePageData>(contentL).Language;
@@ -18,8 +19,89 @@
     }
 }
 
-<header data-bs-theme="dark">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<style>
+    header {
+        background-color: #cff2e4;
+        color: #286052;
+    }
+
+    nav {
+        background-color: #cff2e4;
+        color: #286052;
+    }
+
+    .navbar-dark .navbar-brand {
+        color: #286052;
+    }
+
+    .navbar-dark .navbar-toggler-icon {
+        background-color: #286052;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        color: #286052;
+    }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #286052;
+            text-decoration: underline;
+        }
+
+    .navbar-dark .navbar-nav .nav-item.active .nav-link {
+        color: #286052;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .navbar-dark .navbar-toggler {
+        border-color: #286052;
+    }
+
+    .form-control {
+        background-color: #fff;
+        color: #286052;
+    }
+
+    .btn-light {
+        background-color: #286052;
+        color: #fff;
+    }
+
+        .btn-light:hover {
+            background-color: #e0e0e0;
+            color: #286052;
+        }
+
+    .Search {
+        background-color: #e0e0e0;
+        color: #286052;
+    }
+
+    .navbar-dark .navbar-nav .nav-item.active .nav-link {
+        color: #286052;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var currentPath = window.location.pathname.toLowerCase();
+
+
+        var navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+        navLinks.forEach(function (link) {
+            var linkPath = link.getAttribute("href").toLowerCase();
+            if (currentPath === linkPath) {
+                link.parentElement.classList.add("active");
+            }
+        });
+    });
+</script>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Head Chef</a>  @*Få till rätt hem-länk här*@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
