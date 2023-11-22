@@ -37,15 +37,19 @@ namespace Head_Chef.Controllers
         public IActionResult Index(RecipePage currentPage)
         {
             var model = new RecipePageViewModel(currentPage);
+
             try
-            {                
+            {
                 var comments = _commentService.GetCommentsByPage(currentPage.Id);
                 model.Comments = comments;
             }
-            catch { }    
-
+            catch { }
+            ViewData["UserComment"] = model.Comments;
             return View(model);
         }
+
+
+
 
         [HttpPost]
         public IActionResult PostComment(string commentText, int pageId)
@@ -55,12 +59,15 @@ namespace Head_Chef.Controllers
                 PageId = pageId,
                 Text = commentText 
             };
-            try
-            {
-                _commentService.Save(newComment);
-            }
-            catch (Exception ex) { _logger.LogError(ex.Message); }
-            
+
+            _commentService.Save(newComment);
+
+            //try
+            //{
+            //    _commentService.Save(newComment);
+            //}
+            //catch (Exception ex) { _logger.LogError(ex.Message); }
+
 
             var parent = GetParent();
             var c = _contentLoader.GetChildren<RecipePage>(parent).Where(x => x.Id == pageId).FirstOrDefault();

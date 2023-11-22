@@ -10,8 +10,12 @@ public class CommentService : ICommentService
 
     public void Save(Comment comment)
     {
-        _store.Save(comment);
-    }
+            //_store.Save(comment);
+            using (var store = DynamicDataStoreFactory.Instance.CreateStore(typeof(Comment)))
+            {
+                store.Save(comment);
+            }
+        }
 
     public IEnumerable<Comment> GetCommentsByPage(int pageId)
     {
