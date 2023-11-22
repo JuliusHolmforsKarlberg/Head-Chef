@@ -19,6 +19,7 @@ namespace Head_Chef.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 10
         )]
+        [CultureSpecific]
         public virtual string Heading { get; set; } = string.Empty;
 
         [Display(
@@ -27,6 +28,7 @@ namespace Head_Chef.Models.Pages
             Order = 20
         )]
         [UIHint(UIHint.Textarea)]
+        [CultureSpecific]
         public virtual XhtmlString Body { get; set; }
 
         [Display(
