@@ -38,9 +38,10 @@
 
                     if (!string.Equals(Model.CurrentPage.Language.Name, language.Language.Name, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        var flag = Url.Content("~/gfx/flag.webp");
+                        var flag = Url.Content("~/gfx/swe-gb_300.webp");
+                        @*var flag = Url.Content("~/gfx/flag.webp");*@
 
-                        <li><a href="@Url.ContentUrl(link)"><img src="@flag" />@LocalizationService.Current.GetString("/common/languageSelector")</a></li>
+                        <li><a href="@Url.ContentUrl(link)"><img src="@flag" style="height: 48px" />@LocalizationService.Current.GetString("/common/languageSelector")</a></li>
                     }
                 }
             </ul>
