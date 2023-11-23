@@ -1,6 +1,6 @@
 ﻿main {
     min-height: calc(100vh - 72px);
-    margin-top: 72px !important;
+    margin-top: 48px !important;
 }
 
 .bd-placeholder-img {
@@ -152,6 +152,74 @@ footer {
     font-weight: 500;
 }
 
-h1 {
+h1,
+.hc-heading{
     font-family: Agbalumo, serif;
 }
+
+
+/* ****HEADER**** */
+header {
+    background-color: #cff2e4;
+    color: #286052;
+}
+
+nav {
+    background-color: #cff2e4;
+    color: #286052;
+}
+
+.navbar-dark .navbar-brand {
+    color: #286052;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-color: #286052;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #286052;
+}
+
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #286052;
+        text-decoration: underline;
+    }
+
+.navbar-dark .navbar-nav .nav-item.active .nav-link {
+    color: #286052;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: #286052;
+}
+
+.form-control {
+    background-color: #fff;
+    color: #286052;
+}
+
+.btn-light {
+    background-color: #286052;
+    color: #fff;
+}
+
+    .btn-light:hover {
+        background-color: #e0e0e0;
+        color: #286052;
+    }
+
+.Search {
+    background-color: #e0e0e0;
+    color: #286052;
+}
+
+.navbar-dark .navbar-nav .nav-item.active .nav-link {
+    color: #286052;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* ****END HEADER**** */

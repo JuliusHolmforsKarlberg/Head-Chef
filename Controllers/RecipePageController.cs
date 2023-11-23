@@ -26,7 +26,7 @@ namespace Head_Chef.Controllers
 
         public RecipePageController(IContentLoader contentLoader, ICommentService commentService, IContentRepository contentRepository, IServiceProvider serviceProvider, ILogger<RecipePageController> logger)
         {
-            _contentLoader = contentLoader;  //används inte
+            _contentLoader = contentLoader;  
             _commentService = commentService;
             _contentRepository = contentRepository;  //används inte
             _serviceProvider = serviceProvider;
@@ -38,12 +38,18 @@ namespace Head_Chef.Controllers
         {
             var model = new RecipePageViewModel(currentPage);
 
-            try
+            var comments = _commentService.GetCommentsByPage(currentPage.Id);
+            if (comments != null)
             {
-                var comments = _commentService.GetCommentsByPage(currentPage.Id);
                 model.Comments = comments;
             }
-            catch { }
+
+            //try
+            //{
+            //    var comments = _commentService.GetCommentsByPage(currentPage.Id);
+            //    model.Comments = comments;
+            //}
+            //catch (Exception ex) { _logger.LogError(ex.Message); }
             ViewData["UserComment"] = model.Comments;
             return View(model);
         }

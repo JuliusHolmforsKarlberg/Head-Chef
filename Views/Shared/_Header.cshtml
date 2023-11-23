@@ -19,7 +19,7 @@
     }
 }
 
-<style>
+@*<style>
     header {
         background-color: #cff2e4;
         color: #286052;
@@ -82,7 +82,7 @@
         font-weight: bold;
         text-decoration: underline;
     }
-</style>
+</style>*@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -101,9 +101,9 @@
 </script>
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top py-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Head Chef</a>  @*Få till rätt hem-länk här*@
+            <a class="navbar-brand hc-heading" href="/">Head Chef</a>  @*Få till rätt hem-länk här*@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -113,7 +113,7 @@
                 var languageBranches = contentRepository.GetLanguageBranches<PageData>(Model.CurrentPage.ContentLink).ToList();
             }
 
-            <ul>
+            @*<ul>
                 @foreach (var language in languageBranches)
                 {
                     var link = UriUtil.AddLanguageSelection(Model.CurrentPage.LinkURL, language.Language.Name);
@@ -121,12 +121,12 @@
                     if (!string.Equals(Model.CurrentPage.Language.Name, language.Language.Name, StringComparison.CurrentCultureIgnoreCase))
                     {
                         var flag = Url.Content("~/gfx/swe-gb_300.webp");
-                        @*var flag = Url.Content("~/gfx/flag.webp");*@
+                        
 
                         <li><a href="@Url.ContentUrl(link)"><img src="@flag" style="height: 48px" />@LocalizationService.Current.GetString("/common/languageSelector")</a></li>
                     }
                 }
-            </ul>
+            </ul>*@
 
 
 
@@ -154,6 +154,22 @@
                         }
                     }
                 </ul> 
+
+                <div class="px-3">
+                    @foreach (var language in languageBranches)
+                    {
+                        var link = UriUtil.AddLanguageSelection(Model.CurrentPage.LinkURL, language.Language.Name);
+
+                        if (!string.Equals(Model.CurrentPage.Language.Name, language.Language.Name, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            var flag = Url.Content("~/gfx/swe-gb_300.webp");
+                            @*var flag = Url.Content("~/gfx/flag.webp");*@
+
+                            <div><a href="@Url.ContentUrl(link)"><img src="@flag" style="height: 24px" alt="switch language" />@LocalizationService.Current.GetString("/common/languageSelector")</a></div>
+                        }
+                    }
+                </div>
+
                 <form class="d-flex" role="search" action="@Url.ContentUrl(Model.Layout.SettingsPage.SearchPage)">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" value="">
                     <button class="btn btn-light" type="submit">Search</button>
