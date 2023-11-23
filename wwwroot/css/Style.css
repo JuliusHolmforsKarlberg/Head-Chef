@@ -118,13 +118,13 @@
 footer {
     padding: 5px 0px;
     text-align: center;
-    background-color: black; /* Dark background color */
-    color: #fff; /* Text color */
+    background-color: #286052; /* Dark background color */
+    color: #F5F5F5; /* Text color */
 }
 
     /* Footer Links */
     footer a {
-        color: #fff;
+        color: #F5F5F5;
         text-decoration: none;
     }
 
