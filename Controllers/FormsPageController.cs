@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Head_Chef.Controllers
 {
     public class FormsPageController : PageControllerBase<FormsPage>
-{
-    public IActionResult Index(FormsPage currentContent)
     {
+        public IActionResult Index(FormsPage currentContent)
+        {
             var model = new FormsPageViewModel(currentContent);
-        return View(model);
+            return View(model);
 
+        }
     }
-}
 }

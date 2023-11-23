@@ -37,6 +37,8 @@ namespace Head_Chef.Models.Pages
         [AllowedTypes(typeof(CarouselPage), typeof(CarouselBlock))]
         public virtual ContentArea Carousel { get; set; }
 
+
+
         [ScaffoldColumn(false)]
         public override CategoryList Category { get; set; }
     }

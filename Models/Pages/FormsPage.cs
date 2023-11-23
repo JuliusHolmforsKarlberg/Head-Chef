@@ -31,6 +31,12 @@ namespace Head_Chef.Models.Pages
         )]
         public virtual string Email { get; set; } = string.Empty;
 
+        [Display(
+        GroupName = SystemTabNames.Content,
+        Order = 30
+        )]
+        public virtual ContentArea ContentArea { get; set; }
+
     }
       
 }
