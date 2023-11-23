@@ -18,6 +18,9 @@
 		<PackageReference Include="EPiServer.CMS.UI" Version="12.23.0" />
 		<PackageReference Include="EPiServer.CMS.UI.Core" Version="12.23.0" />
 		<PackageReference Include="EPiServer.Find.Cms" Version="15.2.0" />
+		<PackageReference Include="EPiServer.Forms" Version="5.7.1" />
+		<PackageReference Include="EPiServer.Forms.Core" Version="5.7.1" />
+		<PackageReference Include="EPiServer.Forms.UI" Version="5.7.1" />
 		<PackageReference Include="EPiServer.Framework" Version="12.19.0" />
 		<PackageReference Include="Geta.NotFoundHandler.Admin" Version="5.0.8" />
 		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="5.0.8" />
