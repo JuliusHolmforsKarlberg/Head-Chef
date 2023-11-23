@@ -34,14 +34,17 @@ namespace Head_Chef.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(RecipePage currentPage)
+        public async Task<IActionResult> IndexAsync(RecipePage currentPage)
+        //public IActionResult Index(RecipePage currentPage)
         {
             var model = new RecipePageViewModel(currentPage);
 
-            var comments = _commentService.GetCommentsByPage(currentPage.Id);
+            var comments = await _commentService.GetCommentsByPageAsync(currentPage.Id);
+            //var comments =  _commentService.GetCommentsByPage(currentPage.Id);
+
             if (comments != null)
             {
-                model.Comments = comments;
+                model.Comments = comments.ToList();
             }
 
             //try

@@ -47,6 +47,7 @@
                 <input type="text" id="commentText" name="commentText">
                 <input type="submit" value="Submit">
             }
+            @*(var comment in ViewData["UserComment"] as List<Comment>)*@
             @foreach (var comment in Model.Comments)
             {
                 <p>@(comment.Text)</p>
