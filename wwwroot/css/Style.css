@@ -2,6 +2,9 @@
     min-height: calc(100vh - 72px);
     margin-top: 48px !important;
 }
+.hc-font-bigger{
+    font-size: 1.25rem;
+}
 
 .bd-placeholder-img {
     font-size: 1.125rem;

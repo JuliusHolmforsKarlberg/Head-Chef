@@ -19,70 +19,7 @@
     }
 }
 
-@*<style>
-    header {
-        background-color: #cff2e4;
-        color: #286052;
-    }
 
-    nav {
-        background-color: #cff2e4;
-        color: #286052;
-    }
-
-    .navbar-dark .navbar-brand {
-        color: #286052;
-    }
-
-    .navbar-dark .navbar-toggler-icon {
-        background-color: #286052;
-    }
-
-    .navbar-dark .navbar-nav .nav-link {
-        color: #286052;
-    }
-
-        .navbar-dark .navbar-nav .nav-link:hover {
-            color: #286052;
-            text-decoration: underline;
-        }
-
-    .navbar-dark .navbar-nav .nav-item.active .nav-link {
-        color: #286052;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-
-    .navbar-dark .navbar-toggler {
-        border-color: #286052;
-    }
-
-    .form-control {
-        background-color: #fff;
-        color: #286052;
-    }
-
-    .btn-light {
-        background-color: #286052;
-        color: #fff;
-    }
-
-        .btn-light:hover {
-            background-color: #e0e0e0;
-            color: #286052;
-        }
-
-    .Search {
-        background-color: #e0e0e0;
-        color: #286052;
-    }
-
-    .navbar-dark .navbar-nav .nav-item.active .nav-link {
-        color: #286052;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-</style>*@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -111,26 +48,7 @@
             @{
                 var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
                 var languageBranches = contentRepository.GetLanguageBranches<PageData>(Model.CurrentPage.ContentLink).ToList();
-            }
-
-            @*<ul>
-                @foreach (var language in languageBranches)
-                {
-                    var link = UriUtil.AddLanguageSelection(Model.CurrentPage.LinkURL, language.Language.Name);
-
-                    if (!string.Equals(Model.CurrentPage.Language.Name, language.Language.Name, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        var flag = Url.Content("~/gfx/swe-gb_300.webp");
-                        
-
-                        <li><a href="@Url.ContentUrl(link)"><img src="@flag" style="height: 48px" />@LocalizationService.Current.GetString("/common/languageSelector")</a></li>
-                    }
-                }
-            </ul>*@
-
-
-
-
+            }  
              <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
@@ -147,7 +65,7 @@
                         {
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="@urlLanguage/@(_contentLoader.Get<SitePageData>(item.ContentLink).URLSegment)">
+                                <a class="nav-link hc-font-bigger" href="@urlLanguage/@(_contentLoader.Get<SitePageData>(item.ContentLink).URLSegment)">
                                     @(_contentLoader.Get<SitePageData>(item.ContentLink).Name)
                                 </a>
                             </li>
