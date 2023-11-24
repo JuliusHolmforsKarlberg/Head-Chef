@@ -1,4 +1,4 @@
-﻿﻿@using EPiServer.Framework.Localization;
+﻿@using EPiServer.Framework.Localization;
 @using EPiServer.ServiceLocation;
 @using EPiServer.Web.Mvc.Html
 @using Head_Chef.Models.Pages;
@@ -12,17 +12,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Short Form</title>
+    <title>Short Contact Form</title>
+
+    <style>
+/*         body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        } */
+
+        .form-container {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            background-color: #fff;
+            margin: auto;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="email"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 226px;
+            resize: vertical;
+        }
+
+/*         input[type="submit"] {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: #fff;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: inline-block;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            } */
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #286052;
+            color: #fff;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: inline-block;
+        }
+
+            button:hover {
+                background-color: #c6c7c8;
+            }
+
+    </style>
 </head>
 
 <body>
-    <h1>Short Form</h1>
-    <form action="#" method="post">
-        <label for="firstName">DON'T USE, DOESN'T' WORK</label>
-        <input type="text" id="firstName" name="firstName" required><br><br>
-    </form>
+    <div class="form-container">
+        <h1>Short Contact Form</h1>
+        @Html.PropertyFor(x => x.CurrentPage.ContentArea)
+    </div>
 </body>
 
 </html>
-
-@Html.PropertyFor(x => x.CurrentPage.ContentArea)
