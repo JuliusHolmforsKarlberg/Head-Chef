@@ -47,30 +47,36 @@
         </div>
     }
 
-    <!-- Include your JavaScript -->
-    <script>
-        // Show loading icon
-        function showLoadingIcon() {
-            document.getElementById('loading-icon').classList.remove('hidden');
-        }
 
-        // Hide loading icon
-        function hideLoadingIcon() {
-            document.getElementById('loading-icon').classList.add('hidden');
-        }
 
-        // Load content function
-        function loadContent() {
-            showLoadingIcon();
+<script>
+    // Show loading icon
+    function showLoadingIcon() {
+        document.getElementById('loading-icon').classList.remove('hidden');
+    }
 
-            // Simulate asynchronous content loading (replace with your actual logic)
+    // Hide loading icon
+    function hideLoadingIcon() {
+        document.getElementById('loading-icon').classList.add('hidden');
+    }
+
+    // Load content function
+    function loadContent() {
+        showLoadingIcon();
+
+        const contentLoadingPromise = new Promise(resolve => {
             setTimeout(function () {
-                // Your content loading logic goes here
 
-                // Hide loading icon when content is loaded
-                hideLoadingIcon();
-            }, 2000); // Simulating a 2-second delay
-        }
-    </script>
+                resolve();
+            }, 30000); 
+        });
+
+        contentLoadingPromise.then(() => {
+            hideLoadingIcon();
+        });
+    }
+</script>
+
+
 
 
