@@ -12,11 +12,13 @@
     var currentLanguage = _contentLoader.Get<SitePageData>(contentL).Language;
 }*@
 @{
+    var startPageLink = _contentLoader.Get<SitePageData>(Model.Layout.StartPage.ContentLink).LinkURL;
     var urlLanguage = "";
     if (!@Model.CurrentPage.IsMasterLanguageBranch)
     {
         urlLanguage = $"/{Model.Layout.SettingsPage.Language}";
-    }
+        startPageLink = _contentLoader.Get<SitePageData>(Model.Layout.StartPage.ContentLink).ExternalURL + urlLanguage;
+    }    
 }
 
 
@@ -36,11 +38,10 @@
         });
     });
 </script>
-
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top py-3">
         <div class="container-fluid">
-            <a class="navbar-brand hc-heading" href="/">Head Chef</a>  @*Få till rätt hem-länk här*@
+            <a class="navbar-brand hc-heading" href="@startPageLink">Head Chef</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -54,16 +55,8 @@
 
                     @if (Model.Layout.SettingsPage.Navigation != null)
                     {
-                        
-                        @*var urlLanguage = "";
-                        if (!@Model.CurrentPage.IsMasterLanguageBranch)
-                        {
-                            urlLanguage = $"/{Model.Layout.SettingsPage.Language}";
-                        }*@                       
-
                         @foreach (var item in Model.Layout.SettingsPage.Navigation.FilteredItems)
                         {
-                            
                             <li class="nav-item">
                                 <a class="nav-link hc-font-bigger" href="@urlLanguage/@(_contentLoader.Get<SitePageData>(item.ContentLink).URLSegment)">
                                     @(_contentLoader.Get<SitePageData>(item.ContentLink).Name)
@@ -80,8 +73,7 @@
 
                         if (!string.Equals(Model.CurrentPage.Language.Name, language.Language.Name, StringComparison.CurrentCultureIgnoreCase))
                         {
-                            var flag = Url.Content("~/gfx/swe-gb_300.webp");
-                            @*var flag = Url.Content("~/gfx/flag.webp");*@
+                            var flag = Url.Content("~/gfx/swe-gb_300.webp");                            
 
                             <div><a href="@Url.ContentUrl(link)"><img src="@flag" style="height: 24px" alt="switch language" />@LocalizationService.Current.GetString("/common/languageSelector")</a></div>
                         }
