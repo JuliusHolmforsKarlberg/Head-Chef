@@ -17,96 +17,111 @@ namespace Head_Chef.Controllers
 
     public class RecipePageController : PageControllerBase<RecipePage>
     {
-        private readonly IContentLoader _contentLoader;
-        private readonly ICommentService _commentService;
-        private readonly IContentRepository _contentRepository;
-        private readonly IServiceProvider _serviceProvider;
-        private readonly ILogger<RecipePageController> _logger;
+        //private readonly IContentLoader _contentLoader;
+        //private readonly ICommentService _commentService;
+        //private readonly IContentRepository _contentRepository;
+        //private readonly IServiceProvider _serviceProvider;
+        //private readonly ILogger<RecipePageController> _logger;
 
 
-        public RecipePageController(IContentLoader contentLoader, ICommentService commentService, IContentRepository contentRepository, IServiceProvider serviceProvider, ILogger<RecipePageController> logger)
-        {
-            _contentLoader = contentLoader;  
-            _commentService = commentService;
-            _contentRepository = contentRepository;  //används inte
-            _serviceProvider = serviceProvider;
-            _logger = logger;
-        }
+        //public RecipePageController(IContentLoader contentLoader, ICommentService commentService, IContentRepository contentRepository, IServiceProvider serviceProvider, ILogger<RecipePageController> logger)
+        //{
+        //    _contentLoader = contentLoader;  
+        //    _commentService = commentService;
+        //    _contentRepository = contentRepository;  
+        //    _serviceProvider = serviceProvider;
+        //    _logger = logger;
+        //}
 
-        [HttpGet]
-        public async Task<IActionResult> IndexAsync(RecipePage currentPage)
-        //public IActionResult Index(RecipePage currentPage)
+        [HttpGet]        
+        public IActionResult Index(RecipePage currentPage)
         {
             var model = new RecipePageViewModel(currentPage);
-
-            var comments = await _commentService.GetCommentsByPageAsync(currentPage.Id);
+            
             //var comments =  _commentService.GetCommentsByPage(currentPage.Id);
 
-            if (comments != null)
-            {
-                model.Comments = comments.ToList();
-            }
-
+            //if (comments != null)
+            //{
+            //    model.Comments = comments.ToList();
+            //}
+            ////////////////
             //try
             //{
             //    var comments = _commentService.GetCommentsByPage(currentPage.Id);
             //    model.Comments = comments;
             //}
             //catch (Exception ex) { _logger.LogError(ex.Message); }
-            ViewData["UserComment"] = model.Comments;
+            ////////////////
+            //ViewData["UserComment"] = model.Comments;
             return View(model);
         }
 
 
+        //// Get --- async
+        //[HttpGet]
+        //public async Task<IActionResult> IndexAsync(RecipePage currentPage)
+        //{
+        //    var model = new RecipePageViewModel(currentPage);
+
+        //    var comments = await _commentService.GetCommentsByPageAsync(currentPage.Id);
+
+        //    if (comments != null)
+        //    {
+        //        model.Comments = comments.ToList();
+        //    }
+
+        //    //ViewData["UserComment"] = model.Comments;
+        //    return View(model);
+        //}
 
 
-        [HttpPost]
-        public IActionResult PostComment(string commentText, int pageId)
-        {            
-            var newComment = new Comment
-            {
-                PageId = pageId,
-                Text = commentText 
-            };
+        //[HttpPost]
+        //public IActionResult PostComment(string commentText, int pageId)
+        //{            
+        //    var newComment = new Comment
+        //    {
+        //        PageId = pageId,
+        //        Text = commentText 
+        //    };
 
-            _commentService.Save(newComment);
+        //    _commentService.Save(newComment);
 
-            //try
-            //{
-            //    _commentService.Save(newComment);
-            //}
-            //catch (Exception ex) { _logger.LogError(ex.Message); }
+        //    //try
+        //    //{
+        //    //    _commentService.Save(newComment);
+        //    //}
+        //    //catch (Exception ex) { _logger.LogError(ex.Message); }
 
 
-            var parent = GetParent();
-            var c = _contentLoader.GetChildren<RecipePage>(parent).Where(x => x.Id == pageId).FirstOrDefault();
+        //    var parent = GetParent();
+        //    var c = _contentLoader.GetChildren<RecipePage>(parent).Where(x => x.Id == pageId).FirstOrDefault();
 
-            var urlHelper = _serviceProvider.GetInstance<UrlResolver>();
-            var friendlyUrl = urlHelper.GetUrl(c.ContentLink);
-            
-            return Redirect(friendlyUrl);
+        //    var urlHelper = _serviceProvider.GetInstance<UrlResolver>();
+        //    var friendlyUrl = urlHelper.GetUrl(c.ContentLink);
 
-        }
+        //    return Redirect(friendlyUrl);
 
-        public ContentReference GetParent()
-        {
-            var startPageContentLink = SiteDefinition.Current.StartPage;
-            var startPage = _contentLoader.Get<StartPage>(startPageContentLink);
-            var settingsPages = new List<SettingsPage>();
-            startPage.GetDescendantsOfType(settingsPages);
-            var settingsPage = settingsPages.FirstOrDefault();
+        //}
 
-            if (settingsPage != null)
-            {
-                var parent = settingsPage.RecipesContainer;
+        //public ContentReference GetParent()
+        //{
+        //    var startPageContentLink = SiteDefinition.Current.StartPage;
+        //    var startPage = _contentLoader.Get<StartPage>(startPageContentLink);
+        //    var settingsPages = new List<SettingsPage>();
+        //    startPage.GetDescendantsOfType(settingsPages);
+        //    var settingsPage = settingsPages.FirstOrDefault();
 
-                if (parent != null)
-                {
-                    return parent;
-                }
-            }
+        //    if (settingsPage != null)
+        //    {
+        //        var parent = settingsPage.RecipesContainer;
 
-            return null;
-        }
+        //        if (parent != null)
+        //        {
+        //            return parent;
+        //        }
+        //    }
+
+        //    return null;
+        //}
     }
 }

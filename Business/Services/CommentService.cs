@@ -10,11 +10,11 @@ public class CommentService : ICommentService
 
     public void Save(Comment comment)
     {
-            //_store.Save(comment);
-            using (var store = DynamicDataStoreFactory.Instance.CreateStore(typeof(Comment)))
-            {
-                store.Save(comment);
-            }
+            _store.Save(comment);
+            //using (var store = DynamicDataStoreFactory.Instance.CreateStore(typeof(Comment)))
+            //{
+            //    store.Save(comment);
+            //}
         }
 
         public async Task<IEnumerable<Comment>> GetCommentsByPageAsync(int pageId)

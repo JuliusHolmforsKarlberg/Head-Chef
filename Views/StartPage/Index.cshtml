@@ -1,4 +1,4 @@
-﻿﻿@using EPiServer.Framework.Localization;
+﻿@using EPiServer.Framework.Localization;
 @using EPiServer.ServiceLocation;
 @using EPiServer.Shell.Web.Mvc.Html;
 @using EPiServer.Web.Mvc.Html
@@ -21,14 +21,14 @@
             @foreach (var item in Model.Recipes.Take(8)) 
                 {
                     <div class="col">
-                    <div class="card h-100">   
+                        <div class="card h-100">   
 
-                        <img src="@item.Image" class="card-img-top img-fluid" alt="@item.Title"/> 
-                                <div class="card-body">
-                            <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link">
-                                <h2 class="card-title h6">@item.Title </h2>
-                            </a>
-                                </div>
+                            <img src="@item.Image" class="card-img-top img-fluid" alt="@item.Title"/> 
+                            <div class="card-body">
+                                <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link">
+                                    <h2 class="card-title h6">@item.Title </h2>
+                                </a>
+                            </div>
                             <div class="card-footer">
                                 <i class="bi bi-clock "></i>
                                 <span>@item.ReadyInMinutes min</span>

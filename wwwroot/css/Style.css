@@ -1,9 +1,29 @@
 ﻿main {
-    min-height: calc(100vh - 72px);
-    margin-top: 48px !important;
+    min-height: calc(100vh - 78px);
+    margin-top: 78px !important; /*48px*/
 }
 .hc-font-bigger{
     font-size: 1.25rem;
+}
+
+/*** Klasser att kaske använda på text i karusell ***/
+.hc-text-outlined {
+    /*-webkit-text-stroke: 5px rgb(40, 96, 82, 0.5);*/
+    /*text-shadow: 3px 3px 0 #286052, -3px 3px 0 #286052, -3px -3px 0 #286052, 3px -3px 0 #286052;*/
+    /*text-shadow: 3px 3px 1px rgb(40, 96, 82), -3px -3px 1px rgb(40, 96, 82, 0.1)*/
+    /**************/
+    /*background-color: rgb(40, 96, 82, 0.2);
+    width: fit-content;*/    
+}
+.hc-overlay {
+    background-color: rgb(40, 96, 82, 0.2);
+    width: fit-content;
+}
+/*** ***/
+
+.hc-top-fix{
+    position: relative;
+    top: -24px
 }
 
 .bd-placeholder-img {
