@@ -20,6 +20,7 @@ namespace Head_Chef.Models.Pages
             typeof(FindPage),
             typeof(ErrorPage),
             typeof(FormsPage),
+            typeof(ThankYouPage),
             typeof(MyRecipesPage),
             typeof(AllArticlesPage),
             typeof(CookiesPage),

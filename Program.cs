@@ -2,7 +2,7 @@ using Serilog;
 
 namespace Head_Chef
 {
-    public class Program
+    public static class Program
     {
         public static IConfiguration Configuration { get; } =
         new ConfigurationBuilder()

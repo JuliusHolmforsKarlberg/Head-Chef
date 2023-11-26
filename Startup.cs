@@ -17,7 +17,7 @@ using Head_Chef.Models.Pages;
 
 namespace Head_Chef
 {
-    public class Startup
+    public sealed class Startup
     {
         private readonly IWebHostEnvironment _webHostingEnvironment;
 
