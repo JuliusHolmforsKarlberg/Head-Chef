@@ -12,6 +12,7 @@ namespace Head_Chef.Models.ViewModels
         public List<RecipeCardsViewModel.Result> Recipes { get; set; }
 
         public int TotalResults { get; set; }
+        public string SearchPageText { get; set; } = string.Empty;
 
         //public RecipeViewModel.Root Recipe { get; set; }
     }

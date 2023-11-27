@@ -1,4 +1,6 @@
-﻿using static Head_Chef.Globals;
+﻿using EPiServer.Web;
+using System.ComponentModel.DataAnnotations;
+using static Head_Chef.Globals;
 
 namespace Head_Chef.Models.Pages
 {
@@ -10,5 +12,14 @@ namespace Head_Chef.Models.Pages
     )]
     public class SearchPage : SitePageData
     {
+
+        [Display(
+            Name = "Search page text",
+            GroupName = SystemTabNames.Content,
+            Order = 10
+        )]
+        [UIHint(UIHint.Textarea)]
+        [CultureSpecific]
+        public virtual XhtmlString SearchPageText { get; set; }
     }
 }

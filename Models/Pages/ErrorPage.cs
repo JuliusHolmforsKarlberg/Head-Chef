@@ -9,9 +9,20 @@ namespace Head_Chef.Models.Pages
     {
         [Display( 
             GroupName = SystemTabNames.Content,
-            Order = 10
+            Order = 10,
+            Name = "Header",
+           Description = "Error header"
             )]
         [CultureSpecific]
-        public virtual string? Header { get; set; }   
+        public virtual string? Header { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Content,
+            Order = 20,
+            Name = "Error text",
+            Description = "The error text"
+            )]
+        [CultureSpecific]
+        public virtual string? Text { get; set; }
     }
 }

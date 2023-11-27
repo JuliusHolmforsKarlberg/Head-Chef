@@ -13,8 +13,8 @@
                     <div class="card ">
                         <img src="@Url.ContentUrl(@item.Image)" alt="@Url.ContentUrl(@item.ImageDescription)" class="card-img-top img-fluid" />
                         <div class="card-body">
-                            <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link">
-                                <h2 class="card-title h6">@item.Heading </h2>
+                            <a href="@Url.ContentUrl(item.ContentLink)" class="text-decoration-none stretched-link hc-text-green">
+                                <h2 class="card-title h5">@item.Heading </h2>
                             </a>
                             <div class="card-text" style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
                                 @Html.Raw(item.Body)

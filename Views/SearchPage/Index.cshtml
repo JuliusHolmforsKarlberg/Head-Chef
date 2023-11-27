@@ -5,13 +5,12 @@
 
 @model SearchPageViewModel
 
-@{
-    var defaultPoster = "/static/img/default-poster.jpg";
-}
+
 
 <div class="py-5 bg-body-tertiary">
     <div class="container">
         <h1>@LocalizationService.Current.GetString("/searchresult")</h1>
+        <div class="hc-font-bigger">@Html.Raw(Model.CurrentPage.SearchPageText)</div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 my-3">
 
             @if(Model != null)
@@ -23,8 +22,8 @@
                             <img src="@item.Image" alt="@item.Title" class="card-img-top img-fluid" />
                             <div class="card-body">
                                 <h2 class="card-title h6">@item.Title </h2>
-                                <form action="@Html.Action(Url.ContentUrl(Model.Layout.SettingsPage.SearchPage), "add")">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary" name="id" value="@item.Id">Add</button>
+                                <form class="mt-auto" action="@Html.Action(Url.ContentUrl(Model.Layout.SettingsPage.SearchPage), "add")">
+                                    <button type="submit" class="btn btn-sm btn-light" name="id" value="@item.Id">@LocalizationService.Current.GetString("/addbutton")</button>
                                 </form>
                             </div>
 

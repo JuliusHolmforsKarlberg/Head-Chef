@@ -22,6 +22,7 @@ namespace Head_Chef.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 10
         )]
+        [CultureSpecific]
         public virtual string Title { get; set; } = string.Empty;
 
         [Display(
@@ -29,6 +30,7 @@ namespace Head_Chef.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 20
         )]
+        [CultureSpecific]
         public virtual string Email { get; set; } = string.Empty;
 
         [Display(

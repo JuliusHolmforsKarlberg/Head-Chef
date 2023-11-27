@@ -11,15 +11,15 @@
 
     <section class="search-section py-5">
         <div class="container">
-            <h1 class="text-center mb-4">@LocalizationService.Current.GetString("/find")</h1>
+        <h1 class="text-center mb-4 hc-text-green">@LocalizationService.Current.GetString("/find")</h1>
         <div class="row justify-content-center">
             <div class="mx-auto search-form" style="width: fit-content;">
 
                 @using (Html.BeginForm(FormMethod.Post, new { style = "width: fit-content;" }))
                     {
                         <div class="d-flex column-gap-3">
-                            <input type="text" name="q" class="form-control" value="@Model.SearchQuery" />
-                            <input type="submit" class="btn btn-light search-button" value="Search" onclick="loadContent()" />
+                        <input type="text" name="q" class="form-control" value="@Model.SearchQuery" autoFocus />
+                        <input type="submit" class="btn btn-light search-button" value="@LocalizationService.Current.GetString("/search")" onclick="loadContent()" />
                         </div>
                     }
                 </div>
@@ -32,12 +32,12 @@
         <div class="container search-results">
             <p class="result-count">Your search for <i>@Model.SearchQuery</i> resulted in @Model.Results.Count() hits</p>
             <div class="listResult">
-                <ul>
+                <ul class="list-unstyled">
                     @foreach (var item in Model.Results)
                     {
-                        <li class="result-item">
-                        <a href="@item.Url">
-                            <h2 class="result-title h4">@item.Title</h2>
+                    <li class="result-item position-relative">
+                        <a href="@item.Url" class="stretched-link">
+                            <h2 class="result-title h4 hc-heading hc-text-green">@item.Title</h2>
                         </a>
                         <p class="result-excerpt">@Html.Raw(item.Excerpt)</p>
                     </li>

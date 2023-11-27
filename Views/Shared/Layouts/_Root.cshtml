@@ -1,4 +1,5 @@
-﻿@using Head_Chef.Models.ViewModels
+﻿@using EPiServer.Framework.Localization;
+@using Head_Chef.Models.ViewModels
 @using Head_Chef.Models.Pages
 @using EPiServer.Web.Mvc.Html
 
@@ -73,10 +74,10 @@
                         });
                     </script>
                     <div class="w100 d-flex justify-content-end">
-                        <p class="float-end"><a href="#">Back to top</a></p>
+                    <p class="float-end"><a href="#">@LocalizationService.Current.GetString("/backtotop")</a></p>
                     </div>
                     <div class="w100 d-flex flex-column justify-content-center flex-md-row justify-content-md-between">
-                        <a href="#" id="open_preferences_center">Update cookies preferences</a>
+                    <a href="#" id="open_preferences_center">@LocalizationService.Current.GetString("/updatecookies")</a>
 
                     <p>&copy;  @DateTime.Now.Year.ToString() Head Chef   @*&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a>*@  </p>
                     </div>

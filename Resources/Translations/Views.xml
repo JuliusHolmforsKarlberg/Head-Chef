@@ -3,6 +3,13 @@
 	<language name="English" id="en">
 		<searchresult>Search result</searchresult>
 		<find>Search on this site</find>
+		<backtotop>Back to top</backtotop>
+		<updatecookies>Update cookie preferences</updatecookies>
+		<search>Search</search>
+		<searchrecipe>Search for recipes</searchrecipe>
+		<addbutton>Add</addbutton>
+		<!--<errorheader>Something went wrong</errorheader>
+		<errortext>Please try another page</errortext>-->
 		<property>
 			<enum>				
 				<orientation>
@@ -15,6 +22,13 @@
 	<language name="Svenska" id="sv">
 		<searchresult>Sökresultat</searchresult>
 		<find>Sök på den här webbplatsen</find>
+		<backtotop>Tillbaka till sidans top</backtotop>
+		<updatecookies>Uppdatera cookie-preferenser</updatecookies>
+		<search>Sök</search>
+		<searchrecipe>Sök efter recept</searchrecipe>
+		<addbutton>Lägg till</addbutton>
+		<!--<errorheader>Något gick fel</errorheader>
+		<errortext>Försök med en annan sida</errortext>-->
 		<property>
 			<enum>				
 				<orientation>

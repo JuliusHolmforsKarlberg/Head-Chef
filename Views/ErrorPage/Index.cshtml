@@ -23,22 +23,25 @@
 
     }
 
-    h2 {
-        color: #007bff; /* Blå färg */
+    /*h2 {
+        color: #007bff; 
         font-size: 28px;
         margin-bottom: 20px;
     }
 
     .p {
-        color: #007bff; /* Mörkgrå färg */
+        color: #007bff; 
         font-size: 16px;
-    }
+    }*/
 </style>
 
 <div class="d-flex align-items-center justify-content-center">
     <div class="error-container">
-        <h2>@Html.PropertyFor(x => x.CurrentPage.Header)</h2>
-        <p class="p">Please try again :)</p>
+        <h1 class="hc-heading hc-text-green">@Html.PropertyFor(x => x.CurrentPage.Header)</h1>
+        <p class="hc-text-green h3 py-4">@Html.PropertyFor(x => x.CurrentPage.Text)</p>
+
+        @*<h2>@LocalizationService.Current.GetString("/errorheader")</h2>
+        <p class="p">@LocalizationService.Current.GetString("/errortext")</p>*@
     </div>
 </div>
 

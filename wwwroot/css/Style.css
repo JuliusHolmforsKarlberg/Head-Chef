@@ -2,9 +2,22 @@
     min-height: calc(100vh - 78px);
     margin-top: 78px !important; /*48px*/
 }
+a {
+    text-decoration: none;
+}
+
 .hc-font-bigger{
     font-size: 1.25rem;
 }
+.hc-text-green {
+    color: #286052 !important;
+}
+h1,
+.hc-heading {
+    font-family: Agbalumo, serif;
+}
+
+
 
 /*** Klasser att kaske använda på text i karusell ***/
 .hc-text-outlined {
@@ -184,10 +197,7 @@ footer {
     font-weight: 500;
 }
 
-h1,
-.hc-heading{
-    font-family: Agbalumo, serif;
-}
+
 
 
 /* ****HEADER**** */
@@ -235,12 +245,14 @@ nav {
 
 .btn-light {
     background-color: #286052;
-    color: #fff;
+    color: #fff;    
 }
 
     .btn-light:hover {
-        background-color: #e0e0e0;
+        
+        background-color: #cff2e4;
         color: #286052;
+        border: 1px #286052 solid;
     }
 
 .Search {
