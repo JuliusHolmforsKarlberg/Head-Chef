@@ -3,16 +3,13 @@
 
 @model ArticlePageViewModel
 
-
-
-
 <div class="container pt-5">
     <h1 class="text-center pt-3">@Model.CurrentPage.Heading</h1>
-    <div class="row pt-3 d-flex">
+    <div class="row py-5 d-flex">
         <div class="col-12 col-lg-6 h-100 @(Model.CurrentPage.Orientation.ToString() == "Right" ? "order-2" : "" )">
             <img src="@Url.ContentUrl(Model.CurrentPage.Image)" alt="@Url.ContentUrl(Model.CurrentPage.ImageDescription)" class="img-fluid w-100" />
         </div>
-        <div class="col-12 col-lg-6 @(Model.CurrentPage.Orientation.ToString() == "Right" ? "order-1" : "" )">
+        <div class="col-12 col-lg-6 px-5 @(Model.CurrentPage.Orientation.ToString() == "Right" ? "order-1" : "" )">
             <div>@Html.Raw(Model.CurrentPage.Body)</div>
         </div>
     </div>
