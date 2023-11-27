@@ -7,33 +7,27 @@
 @model FormsPageViewModel
 
 
-    <style>
-/*         body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        } */
+<style>    
+    .form-container {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 400px;
+        width: 100%;
+        background-color: #fff;
+        margin: auto;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
 
-        .form-container {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 400px;
-            width: 100%;
-            background-color: #fff;
-            margin: auto;
-            margin-top: 5vh;
-            margin-bottom: 5vh;
-        }
-
-        label {
+        .form-container label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
         }
 
-        input[type="email"],
-        textarea {
+        .form-container input,
+        .form-container textarea {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 16px;
@@ -43,31 +37,13 @@
             font-size: 16px;
         }
 
-        textarea {
+        .form-container textarea {
             height: 226px;
             resize: vertical;
         }
-
-/*         input[type="submit"] {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            background-color: #4caf50;
-            color: #fff;
-            transition: background-color 0.3s;
-            width: 100%;
-            display: inline-block;
-        }
-
-            input[type="submit"]:hover {
-                background-color: #45a049;
-            } */
-
-        button {
+        .form-container button {
             padding: 12px 20px;
-            border: none;
+            border: 1px #fff solid;
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
@@ -78,11 +54,13 @@
             display: inline-block;
         }
 
-            button:hover {
-                background-color: #c6c7c8;
+            .form-container button:hover {
+                background-color: #cff2e4;
+                color: #286052;
+                border: 1px #286052 solid;
             }
 
-    </style>
+</style>
 
 <body>
     <div class="form-container">
