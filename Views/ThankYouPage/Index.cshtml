@@ -6,13 +6,7 @@
 
 @model ThankYouPageViewModel
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank you for your message!</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -36,12 +30,10 @@
             color: #333;
         }
     </style>
-</head>
 
 <body>
     <div class="form-container">
-        <h1>Thank you for your message!</h1>
+        <h1>@Html.Raw(Model.CurrentPage.Header)</h1>
     </div>
 </body>
 
-</html>
