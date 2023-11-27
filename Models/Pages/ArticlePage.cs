@@ -29,14 +29,14 @@ namespace Head_Chef.Models.Pages
         )]
         [UIHint(UIHint.Textarea)]
         [CultureSpecific]
-        public virtual XhtmlString Body { get; set; }
+        public virtual XhtmlString? Body { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 30
         )]
         [UIHint(UIHint.Image)]
-        public virtual ContentReference Image { get; set; }
+        public virtual ContentReference? Image { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,
@@ -46,7 +46,7 @@ namespace Head_Chef.Models.Pages
         )]
         [SelectOneEnum(typeof(Orientation))]
         [CultureSpecific]
-        public virtual Orientation Orientation { get; set; }
+        public virtual Orientation? Orientation { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,

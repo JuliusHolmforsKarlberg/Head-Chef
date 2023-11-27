@@ -36,11 +36,11 @@ namespace Head_Chef.Models.Pages
             Description = ""
         )]
         [AllowedTypes(typeof(CarouselPage), typeof(CarouselBlock))]
-        public virtual ContentArea Carousel { get; set; }
+        public virtual ContentArea? Carousel { get; set; }
 
 
 
         [ScaffoldColumn(false)]
-        public override CategoryList Category { get; set; }
+        public override CategoryList? Category { get; set; }
     }
 }

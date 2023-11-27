@@ -20,7 +20,7 @@ namespace Head_Chef.Models.Pages
             Order = 10
         )]
         [UIHint(UIHint.Image)]
-        public virtual ContentReference Image { get; set; }
+        public virtual ContentReference? Image { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,
@@ -44,13 +44,13 @@ namespace Head_Chef.Models.Pages
             Order = 20
         )]
         [CultureSpecific]
-        public virtual XhtmlString Text { get; set; }
+        public virtual XhtmlString? Text { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 30
         )]
         [CultureSpecific]
-        public virtual LinkItem Link { get; set; }
+        public virtual LinkItem? Link { get; set; }
     }
 }

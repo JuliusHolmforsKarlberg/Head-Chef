@@ -18,7 +18,7 @@ namespace Head_Chef.Models.Pages
            Description = ""
        )]
         [AllowedTypes(typeof(ContactBlock))]
-        public virtual ContentArea ContactArea { get; set; }
+        public virtual ContentArea? ContactArea { get; set; }
 
     }
 }
