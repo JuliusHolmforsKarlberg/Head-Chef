@@ -1,1 +1,73 @@
-﻿@using EPiServer.Framework.Localization; @using EPiServer.ServiceLocation; @using EPiServer.Web.Mvc.Html @using Head_Chef.Business.Services.Interfaces; @using Head_Chef.Models.Pages; @using Head_Chef.Models.ViewModels  @model RecipePageViewModel @*@inject ICommentService _service @{     _service.Save(new Models.DDS.Comment             {                 PageId = Model.Id,                 Text = "hej"             }); }*@  <div class=" bg-body-tertiary">     <div class=" container-sm pt-5">         <h1>@Model.CurrentPage.Title</h1>         <div class="py-5">             <div class="card shadow-sm">                 <div class="row g-0">                     <div class="col-lg-4">                         <img src="@Model.CurrentPage.Image" class="h-100 w-100 overflow-hidden object-fit-cover rounded-start" alt="@Model.CurrentPage.Title">                     </div>                     <div class="col-lg-8">                         <div class="card-body p-5">                             <h2 class="card-title">@Model.CurrentPage.Title</h2>                             <p class="card-text">@Html.Raw(Model.CurrentPage.Summary)</p>                             <ul class="pb-3">                                 @Html.Raw(Model.CurrentPage.Ingredients)                             </ul>                             <p class="card-text">@Html.Raw(Model.CurrentPage.Instructions)</p>                         </div>                     </div>                 </div>                             </div>         </div>          @* <div class="row">             <form class="col-12 col-lg-6 d-flex gap-3 mb-auto py-5">                 <input type="hidden" name="pageId" value="@Model.CurrentPage.Id">                 <label for="commentText" class="hc-font-bigger align-self-center">Leave a Comment:</label>                 <textarea type="text" id="commentText" class="form-control w-50" name="commentText"></textarea>                 <input type="submit" value="Submit" class="btn btn-light">             </form>             <div class="col-12 col-lg-6 py-5">                 <p class="pb-2"> <i>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor condimentum lacinia quis vel eros. Magna sit amet purus gravida."</i></p>                 <p class="pb-2"><i>"Pharetra massa massa ultricies mi. Turpis tincidunt id aliquet risus feugiat in ante. In egestas erat imperdiet sed euismod nisi porta lorem." </i></p>                 <p class="pb-2"><i>"Dui ut ornare lectus sit. At tempor commodo ullamcorper a lacus. Proin fermentum leo vel orci porta non."</i></p>             </div>                      </div>*@         @*         <div class="row">           @using (Html.BeginForm("PostComment", "RecipePage", FormMethod.Post, new { @class="col-12 col-lg-6 d-flex gap-3 mb-auto py-5" } ))         {                 <input type="hidden" name="pageId" value="@Model.CurrentPage.Id">                 <label for="commentText" class="hc-font-bigger align-self-center">Leave a Comment:</label>                 <textarea type="text" id="commentText" class="form-control w-50" name="commentText"></textarea><                 <input type="submit" value="Submit" class="btn btn-light">             }         <div class="col-12 col-lg-6 py-5">         @foreach (var comment in Model.Comments) ---------------- (var comment in ViewData["UserComment"] as List<Comment>)             {                 <p class="pb-2"> <i>"@(comment.Text)"</i></p>             }         </div>         </div>         *@     </div> </div>
+﻿@using EPiServer.Framework.Localization;
+@using EPiServer.ServiceLocation;
+@using EPiServer.Web.Mvc.Html;
+@using Head_Chef.Business.Services.Interfaces;
+@using Head_Chef.Models.Pages;
+@using Head_Chef.Models.ViewModels;
+
+@model RecipePageViewModel
+@*@inject ICommentService _service
+@{    
+    _service.Save(new Models.DDS.Comment
+        {                
+            PageId = Model.Id,
+            Text = "hej"            
+        });
+}*@
+    
+<div class=" bg-body-tertiary">
+    <div class=" container-sm pt-5">
+        <h1>@Model.CurrentPage.Title</h1>
+        <div class="py-5">
+            <div class="card shadow-sm">
+                <div class="row g-0">
+                    <div class="col-lg-4">
+                        <img src="@Model.CurrentPage.Image" class="h-100 w-100 overflow-hidden object-fit-cover hc-recipe-img shadow-md" alt="@Model.CurrentPage.Title">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-body p-5">
+                            <h2 class="card-title">@Model.CurrentPage.Title</h2>
+                            <p class="card-text">@Html.Raw(Model.CurrentPage.Summary)</p>
+                            <ul class="pb-3">
+                                @Html.Raw(Model.CurrentPage.Ingredients)
+                            </ul>
+                            <p class="card-text">@Html.Raw(Model.CurrentPage.Instructions)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* <div class="row">
+            <form class="col-12 col-lg-6 d-flex gap-3 mb-auto py-5">
+                <input type="hidden" name="pageId" value="@Model.CurrentPage.Id">
+                <label for="commentText" class="hc-font-bigger align-self-center">Leave a Comment:</label>
+                <textarea type="text" id="commentText" class="form-control w-50" name="commentText"></textarea>
+                <input type="submit" value="Submit" class="btn btn-light">
+            </form>
+            <div class="col-12 col-lg-6 py-5">
+                <p class="pb-2"> <i>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor condimentum lacinia quis vel eros. Magna sit amet purus gravida."</i></p>
+                <p class="pb-2"><i>"Pharetra massa massa ultricies mi. Turpis tincidunt id aliquet risus feugiat in ante. In egestas erat imperdiet sed euismod nisi porta lorem." </i></p>
+                <p class="pb-2"><i>"Dui ut ornare lectus sit. At tempor commodo ullamcorper a lacus. Proin fermentum leo vel orci porta non."</i></p>
+            </div>
+           </div>*@
+                
+                
+         @*
+        <div class="row">
+            @using (Html.BeginForm("PostComment", "RecipePage", FormMethod.Post, new { @class="col-12 col-lg-6 d-flex gap-3 mb-auto py-5" } ))
+            {
+                <input type="hidden" name="pageId" value="@Model.CurrentPage.Id">
+                <label for="commentText" class="hc-font-bigger align-self-center">Leave a Comment:</label>
+                <textarea type="text" id="commentText" class="form-control w-50" name="commentText"></textarea>
+                <input type="submit" value="Submit" class="btn btn-light">
+            }
+            <div class="col-12 col-lg-6 py-5">
+            @foreach (var comment in Model.Comments) ---------------- (var comment in ViewData["UserComment"] as List<Comment>)
+                {
+                <p class="pb-2"> <i>"@(comment.Text)"</i></p>
+                }
+            </div>
+        </div>
+            *@    
+    </div>
+</div>
