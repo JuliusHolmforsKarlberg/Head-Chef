@@ -1,6 +1,5 @@
 ﻿using EPiServer.Web;
 using Head_Chef.Business.Descriptors;
-using Head_Chef.Business.Descriptors;
 using Head_Chef.Models.Pages;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -37,7 +36,7 @@ namespace Head_Chef.Models.Pages
         GroupName = SystemTabNames.Content,
         Order = 30
         )]
-        public virtual ContentArea ContentArea { get; set; }
+        public virtual ContentArea? ContentArea { get; set; }
 
     }
       

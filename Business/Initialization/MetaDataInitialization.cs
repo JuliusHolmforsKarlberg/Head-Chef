@@ -4,7 +4,6 @@ using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 using EPiServer.ServiceLocation;
 using Head_Chef.Business.Extenders;
-using Head_Chef.Business.Extenders;
 
 namespace Head_Chef.Business.Initialization
 {
