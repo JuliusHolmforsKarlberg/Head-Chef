@@ -46,7 +46,7 @@ namespace Head_Chef.Models.Pages
         )]
         [SelectOneEnum(typeof(Orientation))]
         [CultureSpecific]
-        public virtual Orientation? Orientation { get; set; }
+        public virtual Orientation Orientation { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,
